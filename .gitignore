@@ -1,0 +1,17 @@
+wine/
+*.exe
+*.zip
+*.7z
+*.txt
+*.log
+[dD]ebug/
+[rR]ealease/
+bin/
+node_packages/
+.vs*/
+*.nupkg
+sql.config
+secret.config
+*.lock
+secret.json
+.sdkman/
