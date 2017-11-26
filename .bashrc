@@ -56,7 +56,9 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 # akeneo author dot files
 # https://github.com/ronanguilloux/dotfiles/blob/master/.bash_aliases
 
-alias allIps='for ip in $(seq 1 254); do ping -c 1 192.168.1.$ip>/dev/null; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || : ; done'
+alias fastips='for ip in $(seq 1 20); do echo "1.$ip" && ping -c 1 -W 0.5 192.168.1.$ip>/dev/null; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || :; done'
+alias ips    ='for ip in $(seq 1 254); do echo "1.$ip" && ping -c 1 -W 0.5 192.168.1.$ip ; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || :; done'
+# alias allIps='for ip in $(seq 1 254); do ping -c 1 192.168.1.$ip>/dev/null; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || : ; done'
 # Add an "alert" alias for long running commands.  Use like so:
 # #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -67,7 +69,7 @@ alias ...="cd ../.."
 
 alias la='ls -la'
 alias l='ls -la'
-alias lsd='ls -h --color --group-directories-first'
+# alias lsd='ls -h --color --group-directories-first'
 alias lsa='ls -A'           # affiche les fichiers cachés
 alias ll='ls -lh'           # affiche en mode liste détail
 
