@@ -4,6 +4,8 @@ wine/
 *.7z
 *.txt
 *.log
+.arch.*/
+
 [dD]ebug/
 [rR]ealease/
 bin/
