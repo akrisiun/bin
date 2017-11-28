@@ -5,6 +5,7 @@ wine/
 *.txt
 *.log
 .arch.*/
+.backup_*
 
 [dD]ebug/
 [rR]ealease/
