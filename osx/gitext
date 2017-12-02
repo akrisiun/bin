@@ -1,0 +1,5 @@
+#/bin/bash
+mono ~/Beta/webstack/VSIX/gitextensionstree/src/gitextensions/GitExtensions/bin/Debug/GitExtensions.exe &
+
+
+
