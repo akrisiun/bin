@@ -1,4 +1,5 @@
 # bash resources main script
+# ln -s ~/bin/.bashrc ~/.bashrc
 #####################################
 # to reload:
 # . ~/.bashrc
@@ -9,11 +10,25 @@
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
 
 WINEDEBUG=-all
-# FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/5.0.1/lib/mono/4.5
-FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current/lib/mono/4.5
+
+rid='none'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   rid='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   rid='darwin'
+fi
+
+if [[ $rid == 'darwin' ]]; then
+   # FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/5.0.1/lib/mono/4.5
+   FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current/lib/mono/4.5
+fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+echo "rid=$rid"
+echo "TERM=$TERM"
 
 # https://github.com/ronanguilloux/dotfiles/blob/master/.bashrc
 # If this is an xterm set the title to user@host:dir
@@ -30,6 +45,8 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # -------------------- GIT bashing --------------------
+if [[ $rid == 'darwin' ]]; then
+
 function parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -47,15 +64,6 @@ alias service='brew services list'
 alias totalcmd='wine c:/bin/totalcmd/totalcmd.exe &'
 alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 
-# PATH ........
-# Node.js
-# export PATH=$HOME/local/bin:$PATH
-# Android
-# export PATH=/home/ronan/Bin/android-sdk-linux_x86/tools:${PATH}
-# export PATH=/home/ronan/Bin/android-sdk-linux_x86/platform-tools:${PATH}
-# akeneo author dot files
-# https://github.com/ronanguilloux/dotfiles/blob/master/.bash_aliases
-
 alias fastips='for ip in $(seq 1 20); do echo "1.$ip" && ping -c 1 -W 0.5 192.168.1.$ip>/dev/null; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || :; done'
 alias ips    ='for ip in $(seq 1 254); do echo "1.$ip" && ping -c 1 -W 0.5 192.168.1.$ip ; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || :; done'
 # alias allIps='for ip in $(seq 1 254); do ping -c 1 192.168.1.$ip>/dev/null; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || : ; done'
@@ -63,6 +71,15 @@ alias ips    ='for ip in $(seq 1 254); do echo "1.$ip" && ping -c 1 -W 0.5 192.1
 # #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 # alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
+
+fi
+
+# PATH ........
+# export PATH=/home/ronan/Bin/android-sdk-linux_x86/tools:${PATH}
+# export PATH=/home/ronan/Bin/android-sdk-linux_x86/platform-tools:${PATH}
+
+# akeneo author dot files
+# https://github.com/ronanguilloux/dotfiles/blob/master/.bash_aliases
 
 alias ..="cd .."
 alias ...="cd ../.."
