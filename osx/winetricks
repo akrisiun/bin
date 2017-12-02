@@ -3,11 +3,16 @@
 # SC2030: Modification of WINE is local (to subshell caused by (..) group).
 # SC2031: WINE was modified in a subshell. That change might be lost
 # This has to be right after the shebang, see: https://github.com/koalaman/shellcheck/issues/779
+
 # wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+# which winetricks
+# mv /usr/local/bin/winetricks  /usr/local/bin/winetricks1
+# ln -s ~/winetricks /usr/local/bin/winetricks
+# ln -s ~/bin/osx/winetricks /usr/local/bin/winetricks
 
 # Name of this version of winetricks (YYYYMMDD)
 # (This doesn't change often, use the sha256sum of the file when reporting problems)
-WINETRICKS_VERSION=20171018-next
+WINETRICKS_VERSION=20171018-aie-beta
 
 # This is a UTF-8 file
 # You should see an o with two dots over it here [ö]
@@ -299,7 +304,8 @@ w_package_broken_win64()
         if [ -n "$1" ] ; then
             w_die "This package ($W_PACKAGE) is broken on 64-bit Wine. Using a prefix made with WINEARCH=win32 to work around this. See: ${bug_link}"
         else
-            w_die "This package ($W_PACKAGE) is broken on 64-bit Wine. Using a prefix made with WINEARCH=win32 to work around this."
+            # w_die
+            echo "This package ($W_PACKAGE) is broken on 64-bit Wine. Using a prefix made with WINEARCH=win32 to work around this."
         fi
     fi
 }
@@ -312,7 +318,7 @@ w_package_unsupported_win64()
     if [ "$W_ARCH" = "win64" ] ; then
         case $LANG in
             ru*) w_die "Данный пакет не работает в 64-битном окружении. Используйте префикс, созданный с помощью WINEARCH=win32." ;;
-            *) w_die "This package ($W_PACKAGE) does not work on a 64-bit installation. You must use a prefix made with WINEARCH=win32." ;;
+            *)   w_die "This package ($W_PACKAGE) does not work on a 64-bit installation. You must use a prefix made with WINEARCH=win32." ;;
         esac
         exit 32
     fi
@@ -324,7 +330,7 @@ w_package_warn_win64()
     if [ "$W_ARCH" = "win64" ] ; then
         case $LANG in
             ru*) w_warn "Данный пакет может работать не полностью в 64-битном окружении. 32-битные префиксы могут работать лучше." ;;
-            *) w_warn "This package ($W_PACKAGE) may not fully work on a 64-bit installation. 32-bit prefixes may work better." ;;
+            *)   w_warn "This package ($W_PACKAGE) may not fully work on a 64-bit installation. 32-bit prefixes may work better." ;;
         esac
     fi
 }
@@ -3020,8 +3026,8 @@ winetricks_latest_version_check()
                     w_warn "Вы можете ее обновить с помощью менеджера пакетов, --self-update или вручную."
                     ;;
                 *)
-                    w_warn "You are running winetricks-${WINETRICKS_VERSION}, latest upstream is winetricks-${latest_version}!"
-                    w_warn "You should update using your distribution's package manager, --self-update, or manually."
+                    # w_warn "You are running winetricks-${WINETRICKS_VERSION}, latest upstream is winetricks-${latest_version}!"
+                    w_warn "You can update using your distribution's package manager, --self-update, or manually."
                     ;;
             esac
         fi
@@ -4846,7 +4852,7 @@ winetricks_init()
         W_TASKSET="cpuset -l 0"
     else
         # not using w_warn so we don't annoy everyone running via GUI, but still printed to terminal:
-        echo "warning: taskset/cpuset not available on your platform!"
+        # echo "warning: taskset/cpuset not available on your platform!"
         W_TASKSET=""
     fi
 
@@ -4953,44 +4959,11 @@ winetricks_usage()
         da*)
             cat <<_EOF_
 Brug: $0 [tilvalg] [verbum|sti-til-verbum] ...
-Kører de angivne verber.  Hvert verbum installerer et program eller ændrer en indstilling.
-Tilvalg:
--k|--keep_isos: lagr iso'er lokalt (muliggør senere installation uden disk)
--q|--unattended: stil ingen spørgsmål, installér bare automatisk
--r|--ddrescue: brug alternativ disk-tilgangsmetode (hjælper i tilfælde af en ridset disk)
--t|--torify: Run downloads under torify, if available
--v|--verbose: vis alle kommandoer som de bliver udført
--V|--version: vis programversionen og afslut
--h|--help: vis denne besked og afslut
-Diverse verber:
-list: vis en liste over alle verber
-list-cached: vis en liste over verber for allerede-hentede installationsprogrammer
-list-download: vis en liste over verber for programmer der kan hentes
-list-manual-download: list applications which can be downloaded with some help from the user
-list-installed: list already-installed applications
 _EOF_
             ;;
         de*)
             cat <<_EOF_
 Benutzung: $0 [options] [Kommando|Verb|Pfad-zu-Verb] ...
-Angegebene Verben ausführen.
-Jedes Verb installiert eine Anwendung oder ändert eine Einstellung.
-
-Optionen:
-    --force           Nicht prüfen ob Pakete bereits installiert wurden
-    --gui             GUI Diagnosen anzeigen, auch wenn von der Kommandozeile gestartet
-    --isolate         Jedes Programm oder Spiel in eigener Bottle (WINEPREFIX) installieren
--k, --keep_isos       ISOs local speichern (erlaubt spätere Installation ohne Disk)
-    --no-clean        Temp Verzeichnisse nicht löschen (nützlich beim debuggen)
--q, --unattended      Keine Fragen stellen, alles automatisch installieren
--r, --ddrescue        Alternativer Zugriffsmodus (hilft bei zerkratzten Disks)
-    --showbroken      Auch Verben anzeigen die momentan in Wine nicht funktionieren
--t  --torify          Run downloads under torify, if available
-    --verify          Wenn Möglisch automatische GUI Tests für Verben starten
--v, --verbose         Alle ausgeführten Kommandos anzeigen
--h, --help            Diese Hilfemeldung anzeigen
--V, --version         Programmversion anzeigen und Beenden
-
 Kommandos:
 list                  Kategorien auflisten
 list-all              Alle Kategorien und deren Verben auflisten
@@ -5108,8 +5081,6 @@ winetricks_install_app()
         pl*) fail_msg="Niepowodzenie przy instalacji paczki $1" ;;
         ru*) fail_msg="Ошибка установки пакета $1" ;;
         uk*) fail_msg="Помилка встановлення пакунка $1" ;;
-        zh_CN*)   fail_msg="$1 安装失败" ;;
-        zh_TW*|zh_HK*)   fail_msg="$1 安裝失敗" ;;
         *)   fail_msg="Failed to install package $1" ;;
     esac
 
