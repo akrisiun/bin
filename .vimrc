@@ -90,10 +90,10 @@ set softtabstop=4                " insert mode tab and backspace use 4 spaces
 
 " NOT SUPPORT
 " fold
-
-set foldenable
+" # set foldenable
 set foldmethod=indent
 set foldlevel=99
+
 let g:FoldMethod = 0
 map <leader>zz :call ToggleFold()<cr>
 fun! ToggleFold()
@@ -106,7 +106,8 @@ fun! ToggleFold()
     endif
 endfun
 
-" encoding
+" encoding =============================
+"
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set termencoding=utf-8
@@ -150,7 +151,6 @@ hi! link ShowMarksHLu DiffChange
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set laststatus=2   " Always show the status line - use 2 lines for the status bar
 
-
 " ============================ specific file type ===========================
 
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
@@ -182,20 +182,49 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
+" # ============== keys 1 ===========================
+" ===================================================
+" map mouse
+" # http://vim.wikia.com/wiki/Start_in_insert_mode_without_losing_your_escape_key
+" alias vim='vim -c start'
+
+imap <M-up> <C-o><MouseDown>
+imap <M-down> <C-o><MouseUp>
+imap <C-up> <C-o>{
+imap <C-down> <C-o>}
+
+imap <Esc> <C-L>
+inoremap jj <ESC>
+
+nnoremap <F12> <C-L>:set im!<CR>
+nnoremap <F10> <C-L>:set im!<CR>
+
+" nnoremap <F1> :set im!
+" <CR><c-o>:echo <CR>
+nnoremap <F2> :
+nnoremap <C-:> :
+inoremap <F2> <C-o>:
+inoremap <C-:> <C-o>:InsertLeave<CR>
+
+" inoremap <A-h> <C-o>h
+" inoremap <A-j> <C-o>j
+" A
+" inoremap <A-k> <C-o>k
+" inoremap <A-l> <C-o>l
 " ============================ key map ============================
 
-nnoremap k gk
+" nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" map <C-j> <C-W>j
+" map <C-k> <C-W>k
+" map <C-h> <C-W>h
+" map <C-l> <C-W>l
 
-nnoremap <F2> :set nu! nu?<CR>
-nnoremap <F3> :set list! list?<CR>
+" nnoremap <F2> :set nu! nu?<CR>
+" nnoremap <F3> :set list! list?<CR>
 nnoremap <F4> :set wrap! wrap?<CR>
 set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data
@@ -237,16 +266,15 @@ nnoremap <silent> g* g*zz
 " remove highlight
 noremap <silent><leader>/ :nohls<CR>
 
-"Reselect visual block after indent/outdent.调整缩进后自动选中，方便再次操作
+"Reselect visual block after indent/outdent.
 vnoremap < <gv
 vnoremap > >gv
 
-" y$ -> Y Make Y behave like other capitals
-map Y y$
-
-"Map ; to : and save a million keystrokes
-" ex mode commands made easy 用于快速进入命令行
-nnoremap ; :
+" y$ -> Y Make Y behave like other capitalS
+" map Y y$
+" Map ; to : and save a million keystrokes
+" ex mode commands made easy
+"  nnoremap ; :
 
 " save
 cmap w!! w !sudo tee >/dev/null %
@@ -254,5 +282,6 @@ cmap w!! w !sudo tee >/dev/null %
 " command mode, ctrl-a to head， ctrl-e to tail
 cnoremap <C-j> <t_kd>
 cnoremap <C-k> <t_ku>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
+
+cnoremap <C-a> <C-o><Home>
+cnoremap <C-e> <C-o><End>

@@ -15,4 +15,5 @@ secret.config
 *.lock
 secret.json
 .sdkman/
-vscode
+.vscode/
+*.swp
