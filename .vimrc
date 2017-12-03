@@ -193,11 +193,13 @@ imap <M-down> <C-o><MouseUp>
 imap <C-up> <C-o>{
 imap <C-down> <C-o>}
 
-imap <Esc> <C-L>
-inoremap jj <ESC>
+" imap <Esc> <C-o>><C-L>
+" inoremap jj <ESC>
 
 nnoremap <F12> <C-L>:set im!<CR>
 nnoremap <F10> <C-L>:set im!<CR>
+inoremap <F12> <C-o>:set im!<CR>
+inoremap <F10> <C-o>:set im!<CR>
 
 " nnoremap <F1> :set im!
 " <CR><c-o>:echo <CR>
@@ -206,11 +208,16 @@ nnoremap <C-:> :
 inoremap <F2> <C-o>:
 inoremap <C-:> <C-o>:InsertLeave<CR>
 
-" inoremap <A-h> <C-o>h
-" inoremap <A-j> <C-o>j
-" A
-" inoremap <A-k> <C-o>k
-" inoremap <A-l> <C-o>l
+inoremap <Down> <C-o>j
+inoremap <Up> <C-o>k
+" imap <C-n> <Down>
+" imap <C-p> <Up>
+imap <C-@> <C-Space>
+
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <A-l> <C-o>l
 " ============================ key map ============================
 
 " nnoremap k gk
@@ -280,8 +287,8 @@ vnoremap > >gv
 cmap w!! w !sudo tee >/dev/null %
 
 " command mode, ctrl-a to head， ctrl-e to tail
-cnoremap <C-j> <t_kd>
-cnoremap <C-k> <t_ku>
+" cnoremap <C-j> <t_kd>
+" cnoremap <C-k> <t_ku>
 
-cnoremap <C-a> <C-o><Home>
-cnoremap <C-e> <C-o><End>
+" cnoremap <C-a> <C-o><Home>
+" cnoremap <C-e> <C-o><End>
