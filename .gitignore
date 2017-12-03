@@ -16,3 +16,9 @@ secret.config
 secret.json
 .sdkman/
 vscode
+wine/
+wine32*/
+winenet*/
+lib/
+net45-*/
+vfp/
