@@ -4,6 +4,8 @@ wine/
 *.7z
 *.txt
 *.log
+.arch.*/
+.backup_*
 [dD]ebug/
 [rR]ealease/
 bin/
@@ -17,3 +19,4 @@ secret.json
 .sdkman/
 .vscode/
 *.swp
+.viminfo
