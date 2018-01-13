@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    
+    <WinRt2TsTool Condition="'$(WinRt2TsTool)' == ''">"$(DevEnvDir)\CommonExtensions\Microsoft\TypeScript\WinRt2ts.exe"</WinRt2TsTool>
+    <WinRt2TsEmitAnyForUnresolvedTypes Condition="$(WinRt2TsEmitAnyForUnresolvedTypes) == ''">false</WinRt2TsEmitAnyForUnresolvedTypes>
+    <WinRt2TsEmitDocumentation Condition="$(WinRt2TsEmitDocumentation) == ''">true</WinRt2TsEmitDocumentation>
+    <WinRt2TsSuppressWarningsForUnresolvedWindowsTypes Condition="$(WinRt2TsSuppressWarningsForUnresolvedWindowsTypes) == ''">true</WinRt2TsSuppressWarningsForUnresolvedWindowsTypes>
+    <WinRt2TsOutputDir Condition="'$(WinRt2TsOutputDir)'==''">$(IntermediateOutputPath)winrtrefs</WinRt2TsOutputDir>
+    <WinRt2TsResponseFile Condition="'$(WinRt2TsResponseFile)'==''">$(WinRt2TsOutputDir)\winrt2ts.rsp</WinRt2TsResponseFile>
+    <WinRt2TsOutput Condition="'$(WinRt2TsOutput)'==''">$(WinRt2TsOutputDir)\winrtrefs.d.ts</WinRt2TsOutput>
+
+    <!-- All targets that may resolve winmd references need to be completed before ComputeWinRtTypingsInputs-->
+    <ComputeWinRtTypingsInputsDependsOn>
+      $(ComputeWinRtTypingsInputsDependsOn);
+      ResolveProjectReferences;
+      ResolveAssemblyReferences;
+      ResolveComReferences;
+      ResolveSDKReferences;
+      ExpandSDKReferences
+    </ComputeWinRtTypingsInputsDependsOn>
+      
+    <!-- TypeScript compilation depends on the .d.ts to be generated -->
+    <CompileTypeScriptDependsOn>
+      $(CompileTypeScriptDependsOn);
+      GenerateWinRtTypings
+    </CompileTypeScriptDependsOn>
+      
+  </PropertyGroup>
+  
+  <!-- Include the generated .d.ts file in the TypeScript compilation -->
+  <ItemGroup>
+    <TypeScriptCompile Include="$(WinRt2TsOutput)" />
+  </ItemGroup>
+  
+  <!-- Target "ComputeWinRtTypingsInputs" gathers the winmd references and other options, generates the command line for winrt2ts, and updates the response file to be passed to the tool. -->
+  <Target Name="ComputeWinRtTypingsInputs"
+    DependsOnTargets="$(ComputeWinRtTypingsInputsDependsOn)">
+    
+    <ItemGroup>
+      <!-- Get the list of winmd references for the target Windows SDK -->
+      <WinRt2TsInput Include="$([Microsoft.Build.Utilities.ToolLocationHelper]::GetTargetPlatformReferences($(SDKIdentifier), $(SDKVersion), $(TargetPlatformIdentifier), $(TargetPlatformMinVersion), $(TargetPlatformVersion)))"/>
+      <!-- If no target platform references were found, use the TargetPlatformWinMDLocation override instead -->
+      <WinRt2TsInput Include="$(TargetPlatformWinMDLocation)\*.winmd" Condition="@(WinRt2TsInput) == ''" />
+      <!-- Add any additional winmd references included via project references, SDK extensions or assembly references -->
+      <WinRt2TsInput Include="@(WinRt2TsInput);@(ReferencePath)" Condition="%(Extension) == '.winmd'" KeepDuplicates="false" />
+    </ItemGroup>
+
+    <!-- Build the command line arguments for the winrt2ts tool based on the input winmds and other options -->
+    <PropertyGroup>
+      <WinRt2TsArguments>@(WinRt2TsInput);-outFilePath;$(WinRt2TsOutput)</WinRt2TsArguments>
+      <WinRt2TsArguments Condition="'$(WinRt2TsEmitAnyForUnresolvedTypes)'=='true'">$(WinRt2TsArguments);-emitAnyForUnresolvedTypes;</WinRt2TsArguments>
+      <WinRt2TsArguments Condition="'$(WinRt2TsEmitDocumentation)'=='true'">$(WinRt2TsArguments);-emitDocumentation;</WinRt2TsArguments>
+      <WinRt2TsArguments Condition="'$(WinRt2TsSuppressWarningsForUnresolvedWindowsTypes)'=='true'">$(WinRt2TsArguments);-suppressWarningsForUnresolvedWindowsTypes;</WinRt2TsArguments>
+    </PropertyGroup>
+
+    <MakeDir Directories="$(WinRt2TsOutputDir)" />
+
+    <!-- Read the last generated command line arguments from the response file, if it exists -->
+    <ReadLinesFromFile File="$(WinRt2TsResponseFile)" >
+      <Output TaskParameter="Lines" PropertyName="WinRt2TsResponseFileContents" />
+    </ReadLinesFromFile>
+
+    <!-- Overwrite the response file only if the arguments to WinRt2Ts have been updated -->
+    <WriteLinesToFile Condition="'$(WinRt2TsResponseFileContents)' != $(WinRt2TsArguments)" File="$(WinRt2TsResponseFile)" Lines="$(WinRt2TsArguments)" Overwrite="true" />
+
+  </Target>
+  
+
+  <!-- Target "GenerateWinRtTypings" invokes the winrt2ts.exe tool. This target will be skipped if ComputeWinRtTypingsInputs did not detect 
+       any changes in the inputs and thus did not update the response file. -->
+  <Target Name="GenerateWinRtTypings"
+    DependsOnTargets="ComputeWinRtTypingsInputs"
+    Inputs="@(WinRt2TsInput);$(WinRt2TsResponseFile)"
+    Outputs="$(WinRt2TsOutput)">
+
+    <Exec Command="$(WinRt2TsTool) %40&quot;$(WinRt2TsResponseFile)&quot;" />
+    
+  </Target>
+
+</Project>

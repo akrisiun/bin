@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright, Microsoft Corporation, All rights reserved.-->
+<ProjectSchemaDefinitions xmlns="http://schemas.microsoft.com/build/2009/properties" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <Rule Name="FXC"
+          PageTemplate="tool"
+          DisplayName="HLSL Compiler"
+          SwitchPrefix="/"
+          Order="300">
+
+        <Rule.Categories>
+            <Category Name="General" DisplayName="General" />
+            <Category Name="Advanced" DisplayName="Advanced" />
+            <Category Name="Output Files" DisplayName="Output Files" />
+            <Category Name="All Options" DisplayName="All Options" Subtype="Search" />
+            <Category Name="Command Line" DisplayName="Command Line" Subtype="CommandLine" />
+        </Rule.Categories>
+
+        <Rule.DataSource>
+            <DataSource Persistence="ProjectFile" ItemType="FxCompile" Label="" HasConfigurationCondition="true" />
+        </Rule.DataSource>
+
+        <StringListProperty Subtype="folder"
+                            Name="AdditionalIncludeDirectories"
+                            DisplayName="Additional Include Directories"
+                            Description="Specifies one or more directories to add to the include path. Separate with semi-colons (;) if more than one. (/I[path])"
+                            Category="General"
+                            Switch="I"
+                            F1Keyword="VC.Project.FXCompilerTool.AdditionalIncludeDirectories">
+        </StringListProperty>
+
+        <BoolProperty Name="SuppressStartupBanner"
+                      DisplayName="Suppress Startup Banner"
+                      Description="Suppresses the display of the startup banner and information message. (/nologo)"
+                      Category="Advanced"
+                      Switch="nologo"
+                      F1Keyword="VC.Project.FXCompilerTool.SuppressStartupBanner">
+        </BoolProperty>
+
+        <StringProperty Name="EntryPointName"
+                        DisplayName="Entrypoint Name"
+                        Description="Specifies the name of the entry point for the shader (/E[name])"
+                        Category="General"
+                        Switch="E"
+                        F1Keyword="VC.Project.FXCompilerTool.EntryPointName">
+        </StringProperty>
+
+        <BoolProperty Name="TreatWarningAsError"
+                      DisplayName="Treat Warnings As Errors"
+                      Description="Treats all compiler warnings as errors. For a new project, it may be best to use /WX in all compilations; resolving all warnings will ensure the fewest possible hard-to-find code defects."
+                      Category="Advanced"
+                      Switch="WX"
+                      F1Keyword="VC.Project.FXCompilerTool.TreatWarningAsError">
+        </BoolProperty>
+
+        <BoolProperty Name="DisableOptimizations"
+                      DisplayName="Disable Optimizations"
+                      Description="Disable optimizations. /Od implies /Gfp though output may not be identical to /Od /Gfp."
+                      Category="General"
+                      Switch="Od"
+                      F1Keyword="VC.Project.FXCompilerTool.DisableOptimizations">
+        </BoolProperty>
+
+        <BoolProperty Name="EnableDebuggingInformation"
+                      DisplayName="Enable debugging information."
+                      Description="Enable debugging information."
+                      Category="General"
+                      Switch="Zi"
+                      F1Keyword="VC.Project.FXCompilerTool.EnableDebuggingInformation">
+        </BoolProperty>
+
+        <EnumProperty Name="ShaderType"
+                      DisplayName="Shader Type"
+                      Description="Specifies the type of shader.  (/T [type]_[model])"
+                      Category="General"
+                      Switch="T"
+                      F1Keyword="VC.Project.FXCompilerTool.ShaderType">
+            <EnumValue Name="Vertex" Switch="vs" DisplayName="Vertex Shader">
+                <Argument Property="ShaderModel" IsRequired="true" Separator="_" />
+            </EnumValue>
+            <EnumValue Name="Pixel" Switch="ps" DisplayName="Pixel Shader">
+                <Argument Property="ShaderModel" IsRequired="true" Separator="_" />
+            </EnumValue>
+        </EnumProperty>
+
+        <EnumProperty Name="ShaderModel"
+                      DisplayName="Shader Model"
+                      Description="Specifies the shader model. Some shader types can only be used with recent shader models (/T [type]_[model])"
+                      Category="General"
+                      F1Keyword="VC.Project.FXCompilerTool.ShaderModel">
+            <EnumValue Name="4.0_level_9_3" Switch="4_0_level_9_3" DisplayName="Shader Model 4 Level 9_3" Description="DirectX 10">
+            </EnumValue>
+        </EnumProperty>
+
+        <StringListProperty Name="PreprocessorDefinitions"
+                            DisplayName="Preprocessor Definitions"
+                            Description="Defines preprocessing symbols for your source file."
+                            Category="General"
+                            Switch="D "
+                            F1Keyword="VC.Project.FXCompilerTool.PreprocessorDefinitions">
+        </StringListProperty>
+
+        <StringProperty Name="AdditionalOptions"
+                        DisplayName="Additional Options"
+                        Description="Additional Options"
+                        Category="Command Line"
+                        F1Keyword="VC.Project.FXCompilerTool.AdditionalOptionsPage">
+        </StringProperty>
+
+        <StringProperty Name="VariableName" DisplayName="Header Variable Name"
+                        Description="Specifies a name for the variable name in the header file (/Vn [name])"
+                        Category="Output Files" Switch="Vn" F1Keyword="VC.Project.FXCompilerTool.VariableName">
+        </StringProperty>
+
+        <StringProperty Subtype="file" Name="HeaderFileOutput" DisplayName="Header File Name"
+                        Description="Specifies a name for header file containing the object code. (/Fh [name])"
+                        Category="Output Files" Switch="Fh" F1Keyword="VC.Project.FXCompilerTool.HeaderFileOutput">
+        </StringProperty>
+
+        <StringProperty Subtype="file" Name="ObjectFileOutput" DisplayName="Object File Name"
+                    Description="Specifies a name for the object file. (/Fo [name])"
+                    Category="Output Files" Switch="Fo" F1Keyword="VC.Project.FXCompilerTool.ObjectFileOutput">
+        </StringProperty>
+
+        <EnumProperty Name="AssemblerOutput" DisplayName="Assembler Output"
+                      Description="Specifies the contents of assembly language output file. (/Fc, /Fx)"
+                      Category="Output Files" F1Keyword="VC.Project.FXCompilerTool.AssemblerOutput">
+            <EnumValue Name="NoListing" Switch="" DisplayName="No Listing" Description="No listing. ">
+            </EnumValue>
+            <EnumValue Name="AssemblyCode" Switch="Fc" DisplayName="Assembly-Only Listing" Description="Assembly code file">
+                <Argument Property="AssemblerOutputFile" IsRequired="true" Separator=" " />
+            </EnumValue>
+            <EnumValue Name="AssemblyCodeAndHex" Switch="Fx" DisplayName="Assembly code and hex" Description="Assembly code and hex listing file">
+                <Argument Property="AssemblerOutputFile" IsRequired="true" Separator=" " />
+            </EnumValue>
+        </EnumProperty>
+
+        <StringProperty Name="AssemblerOutputFile"
+                        Subtype="file"
+                        DisplayName="Assembler Output File"
+                        Description="Specifies a file name for the assembly code listing file"
+                        Category="Output Files"
+                        F1Keyword="VC.Project.FXCompilerTool.AssemblerOutputFile">
+
+        </StringProperty>
+
+    </Rule>
+
+</ProjectSchemaDefinitions>
