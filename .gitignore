@@ -20,3 +20,4 @@ secret.json
 .vscode/
 *.swp
 .viminfo
+node_modules/
