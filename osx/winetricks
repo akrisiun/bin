@@ -6305,7 +6305,7 @@ load_dxsdk_jun2010()
     w_download https://download.microsoft.com/download/A/E/7/AE743F1F-632B-4809-87A9-AA1BB3458E31/DXSDK_Jun10.exe 9f818a977c32b254af5d649a4cec269ed8762f8a49ae67a9f01101a7237ae61a
 
     # Without dotnet20, install aborts halfway through
-    # w_call dotnet20
+    w_call dotnet20
 
     w_try_cd "$W_TMP"
     w_try "$WINE" "$W_CACHE"/dxsdk_jun2010/DXSDK_Jun10.exe ${W_OPT_UNATTENDED:+/U}
@@ -6981,11 +6981,9 @@ w_metadata dotnet45 dlls \
     publisher="Microsoft" \
     year="2012" \
     media="download" \
-    conflicts="dotnet40 vjrun20" \
+    conflicts="dotnet20 dotnet20sdk dotnet20sp1 dotnet20sp2 dotnet35sp1 dotnet40 vjrun20" \
     file1="dotnetfx45_full_x86_x64.exe" \
     installed_file1="c:/windows/Microsoft.NET/Framework/v4.0.30319/Microsoft.Windows.ApplicationServer.Applications.45.man"
-
-#   dotnet20 dotnet20sdk dotnet20sp1 dotnet20sp2 dotnet35sp1     
 
 load_dotnet45()
 {
@@ -7088,10 +7086,9 @@ w_metadata dotnet46 dlls \
     year="2015" \
     media="download" \
     file1="NDP46-KB3045557-x86-x64-AllOS-ENU.exe" \
-    conflicts="vjrun20" \
+    conflicts="dotnet20 dotnet20sdk dotnet20sp1 dotnet20sp2 dotnet35sp1 dotnet40 vjrun20" \
     installed_file1="c:/windows/Migration/WTR/netfx45_upgradecleanup.inf"
 
-#   dotnet20 dotnet20sdk dotnet20sp1 dotnet20sp2 dotnet35sp1 dotnet40 
 load_dotnet46()
 {
     w_package_warn_win64
@@ -7183,10 +7180,8 @@ w_metadata dotnet462 dlls \
     publisher="Microsoft" \
     year="2016" \
     media="download" \
-    conflicts="dotnet40 dotnet46 dotnet461 vjrun20" \
+    conflicts="dotnet20 dotnet20sdk dotnet20sp1 dotnet20sp2 dotnet35sp1 dotnet40 dotnet46 dotnet461 vjrun20" \
     installed_file1="c:/windows/dotnet462.installed.workaround"
-
-# dotnet20 dotnet20sdk dotnet20sp1 dotnet20sp2 dotnet35sp1     
 
 load_dotnet462()
 {
