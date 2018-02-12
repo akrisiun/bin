@@ -22,3 +22,6 @@ secret.json
 .viminfo
 node_modules/
 Mono.XSP/
+NugetServer/
+xsp4/
+
