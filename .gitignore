@@ -4,6 +4,7 @@ wine/
 *.7z
 *.txt
 *.log
+*.bak
 .arch.*/
 .backup_*
 [dD]ebug/
@@ -21,5 +22,12 @@ secret.json
 *.swp
 .viminfo
 node_modules/
+<<<<<<< HEAD
 NugetServer/
 xsp4/
+=======
+Mono.XSP/
+NugetServer/
+xsp4/
+
+>>>>>>> wsdl
