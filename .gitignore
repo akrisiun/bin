@@ -21,3 +21,5 @@ secret.json
 *.swp
 .viminfo
 node_modules/
+NugetServer/
+xsp4/
