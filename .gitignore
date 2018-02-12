@@ -21,3 +21,4 @@ secret.json
 *.swp
 .viminfo
 node_modules/
+Mono.XSP/
