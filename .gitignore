@@ -4,6 +4,7 @@ wine/
 *.7z
 *.txt
 *.log
+hosts
 .arch.*/
 .backup_*
 [dD]ebug/
@@ -24,4 +25,4 @@ node_modules/
 Mono.XSP/
 NugetServer/
 xsp4/
-
+hosts/
