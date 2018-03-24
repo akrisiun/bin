@@ -1,21 +1,22 @@
 set linenumbers
+#bind ^v menu "uncut"
+unbind M-u all
+bind ^z undo all
 
 syntax "comments" ".*"
 color green "^#.*"
+#color silver "^/*.*"
 set nowrap
 set tabsize 4
-set mouse
 set autoindent
 set brackets ""')>]}"
 set matchbrackets "(]}"
 set smooth
 
 # Ctrl+K delete line
-# Ctlr_U paste (from internal buffer of Alt+A . Alt+6)
+# Ctrl+U paste (from internal buffer of Alt+A . Alt+6)
 # Ctrl+_ go line $
-# ^F search
-unbind ^z
-unbind ^v
-bind ^v uncut
-#bind ^o writeout
-#bind ^z exit
+
+#unbind ^v all
+#bind ^o writeout all
+#set mouse

@@ -29,8 +29,8 @@ xsp4/
 hosts/term/
 profile.win10/
 nodejs/
-corectl/
-corectld/
-corectld.runner/
-qcow-tool/
+corectl
+corectld
+corectld.runner
+qcow-tool
 term/
