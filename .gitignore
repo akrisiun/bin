@@ -26,4 +26,11 @@ node_modules/
 Mono.XSP/
 NugetServer/
 xsp4/
-hosts/
+hosts/term/
+profile.win10/
+nodejs/
+corectl/
+corectld/
+corectld.runner/
+qcow-tool/
+term/
