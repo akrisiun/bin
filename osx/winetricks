@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #!/bin/sh
 # shellcheck disable=SC2030,SC2031
 # SC2030: Modification of WINE is local (to subshell caused by (..) group).
@@ -38359,4 +38358,3 @@ then
 fi
 
 # vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
->>>>>>> wsdl

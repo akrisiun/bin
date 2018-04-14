@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Clean macOS install steps, with Ruby and Brew.sh (Homebrew) package manager
 
 brief: brew, iterm, git, xquartz, wine, nginx, npm, dotnet
@@ -292,4 +291,3 @@ WINEARCH=win64 wine c:/bin/totalcmd/totalcmd.exe &
 ## Wine advanced: boot install.sh
 
 `echo "WINEPREFIX="$HOME/bin/winenet45" WINEARCH=win32 wine wineboot" >> wineinstall.sh`
->>>>>>> wsdl

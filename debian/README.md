@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ### Linux (Debian too) brew http://linuxbrew.sh/
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
@@ -29,6 +28,4 @@ git clone -b debian https://github.com/akrisiun/bin ~/bin
 rm ~/.bash_profile && ln -s ~/bin/.bash_profile ~/.bash_profile 
 . ~/.bash_profile
 cd ~/bin
-
->>>>>>> wsdl
 ```

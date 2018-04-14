@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #!/System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/ruby
 # This script installs to /usr/local only. To install elsewhere you can just
 # untar https://github.com/Homebrew/brew/tarball/master anywhere you like or
@@ -752,4 +751,3 @@ end
 puts "- Run `brew help` to get started"
 puts "- Further documentation: "
 puts "    #{Tty.underline}https://docs.brew.sh#{Tty.reset}"
->>>>>>> wsdl
