@@ -1,0 +1,13 @@
+﻿<!--
+***********************************************************************************************
+Microsoft.DotNet.ImportAfter.targets
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+***********************************************************************************************
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <DotNetTargets Condition="'$(DotNetTargets)'==''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v14.0\DotNet\Microsoft.DotNet.Extensions.targets</DotNetTargets>
+  </PropertyGroup>
+  <Import Condition="Exists('$(DotNetTargets)')" Project="$(DotNetTargets)" />
+</Project>

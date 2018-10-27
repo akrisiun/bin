@@ -1,0 +1,145 @@
+﻿<!--
+***********************************************************************************************
+Microsoft.Cpp.Win32.v110_wp80.props
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+***********************************************************************************************
+-->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\v110_wp80\ImportBefore\*.props" Condition="Exists('$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\v110_wp80\ImportBefore')" />
+
+  <!-- Settings shared with Windows apps -->
+  <PropertyGroup>
+    <!-- Detect whether SLAT machine -->
+    <IsSlatMachine Condition="'$(IsSlatMachine)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\VPDExpress\11.0\Metrics@SlatState)</IsSlatMachine>
+    <IsSlatMachine Condition="'$(IsSlatMachine)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VPDExpress\11.0\Metrics@SlatState)</IsSlatMachine>
+    <IsSlatMachine Condition="'$(IsSlatMachine)' == ''">1</IsSlatMachine>
+    <!-- Don't use the shared WINAPI_FAMILY_APP setting -->
+    <_NoWinAPIFamilyApp Condition="'$(_NoWinAPIFamilyApp)' == ''">true</_NoWinAPIFamilyApp>
+    <!-- Don't include Xaml targets (must set before Microsoft.Cpp.Immersive.props) -->
+    <_DefaultCppCommonExtensionTargets>false</_DefaultCppCommonExtensionTargets>
+    <!-- Static analysis relative path for the phone compiler -->
+    <X86LocalEspcRelativePath>..\..\..\bin\localespc.dll</X86LocalEspcRelativePath>
+    <!-- this must be set even for non-WinMDAssembly phone projects -->
+    <EmbedManifest>false</EmbedManifest>
+    <!-- set target platform identifier here rather than in project file for round-tripping -->
+    <TargetPlatformIdentifier>Windows Phone</TargetPlatformIdentifier>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion>
+  </PropertyGroup>
+  <Import Condition="'$(WinMDAssembly)' == 'true'" Project="$(VCTargetsPath)\Microsoft.Cpp.AppContainerApplication.props" />
+
+  <PropertyGroup>
+    <WindowsSdkDir_80 Condition="'$(WindowsSdkDir_80)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\WindowsPhone\v8.0@InstallationFolder)</WindowsSdkDir_80>
+    <WindowsSdkDir_80 Condition="'$(WindowsSdkDir_80)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Microsoft SDKs\WindowsPhone\v8.0@InstallationFolder)</WindowsSdkDir_80>
+    <WindowsSdkDir Condition="'$(UseEnv)' != 'true'">$(WindowsSdkDir_80)</WindowsSdkDir>
+    <WindowsMinSDKDir Condition="'$(WindowsMinSDKDir)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows Kits\Installed Roots@KitsRoot)</WindowsMinSDKDir>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Required for enabling Team Build for packaging immersive projects -->
+    <OutDirWasSpecified Condition=" '$(OutDir)'!='' AND '$(OutDirWasSpecified)'=='' ">true</OutDirWasSpecified>
+    <OutDirWasSpecified Condition=" '$(OutDir)'=='' AND '$(OutDirWasSpecified)'=='' ">false</OutDirWasSpecified>
+
+    <IntDir Condition="'$(IntDir)'=='' AND '$(IntermediateOutputPath)'!=''">$(IntermediateOutputPath)</IntDir>
+    <IntDir Condition="'$(IntDir)'=='' AND '$(IntermediateOutputPath)'==''">$(Configuration)\</IntDir>
+
+    <!-- No conditional for setting OutDir, just as in Microsoft.Cpp.AppContainerApplication.props -->
+    <OutDir>$(SolutionDir)$(Configuration)\$(MSBuildProjectName)\</OutDir>
+
+    <!-- Short name for platform toolset (appended to project name in Solution Explorer) -->
+    <!--_PlatformToolsetShortNameFor_v110_wp80></_PlatformToolsetShortNameFor_v110_wp80-->
+
+    <!-- Friendly name for platform toolset (used in project property page) -->
+    <_PlatformToolsetFriendlyNameFor_v110_wp80 Condition="'$(_PlatformToolsetFriendlyNameFor_v110_wp80)' == ''">Windows Phone 8.0 (v110)</_PlatformToolsetFriendlyNameFor_v110_wp80>
+
+    <NonCoreWin>true</NonCoreWin>
+
+    <!-- No support for native resources: causes "Add Resource" command to be made invisible -->
+    <SupportsNativeResources>false</SupportsNativeResources>
+
+    <!-- No support for cross-runtime references: e.g. a native phone application project cannot reference a managed phone library project -->
+    <SupportsCrossRuntimeReferences>false</SupportsCrossRuntimeReferences>
+
+    <!-- Phone projects do not require a CRT SDK reference, because the CRT is installed as part of the phone operating system -->
+    <UseCrtSDKReference>false</UseCrtSDKReference>
+  </PropertyGroup>
+  
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Common.props" />
+
+  <PropertyGroup>
+    <GPUDebuggerTargetType>""</GPUDebuggerTargetType>
+    <GPURefDebuggerBreakOnAllThreads>""</GPURefDebuggerBreakOnAllThreads>
+    <PreviousDebuggerFlavor>5E7661DF-D928-40ff-B747-A4B1957194F9</PreviousDebuggerFlavor>
+    <!-- Set WP 8.0 XDE as default debugging target on SLAT machines-->
+    <DebuggerFlavor Condition="'$(IsSlatMachine)' != '0'">5E7661DF-D928-40ff-B747-A4B1957194F9</DebuggerFlavor>
+    <!-- Set WP 7.1 XDE as default debugging target on non-SLAT machines-->
+    <DebuggerFlavor Condition="'$(IsSlatMachine)' == '0'">30F105C9-681E-420b-A277-7C086EAD8A4E</DebuggerFlavor>
+    <AppxPackageDir>""</AppxPackageDir>
+    <MsAppxPackageTargets>$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Phone.Packaging.targets</MsAppxPackageTargets>
+    <UseDefaultDebuggersPropertyPageSchemas>false</UseDefaultDebuggersPropertyPageSchemas>
+    <_ApplicableDebuggers>AppHost</_ApplicableDebuggers>
+    <WP80ToolSetPath>$(VCInstallDir_110)WPSDK\WP80\</WP80ToolSetPath>
+    <CanReferenceWinRT Condition="'$(CanReferenceWinRT)' == ''">true</CanReferenceWinRT>
+    <IgnoreImportLibrary Condition="'$(WinMDAssembly)' == 'true' Or '$(ConfigurationType)' != 'DynamicLibrary'">true</IgnoreImportLibrary>
+    <FullDeploy>true</FullDeploy>
+    <UseDefaultProjectTools>false</UseDefaultProjectTools>
+
+    <!-- Phone projects do not require a CRT SDK reference, because the CRT is installed as part of the phone operating system -->
+    <CrtSDKReferenceInclude></CrtSDKReferenceInclude>
+
+    <ExtensionsToDeleteOnClean Condition="'$(XapOutputs)'=='true'">$(ExtensionsToDeleteOnClean);$(OutDir)$(XapFilename)</ExtensionsToDeleteOnClean>
+    <ExtensionsToDeleteOnClean Condition="Exists('$(OutDir)WMAppManifest.xml')">$(ExtensionsToDeleteOnClean);$(OutDir)WMAppManifest.xml</ExtensionsToDeleteOnClean>
+
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <PropertyGroup>
+    <ExecutablePath Condition="'$(ExecutablePath)' == ''">$(WP80ToolSetPath)bin;$(WindowsSDK_ExecutablePath_x86);$(WindowsMinSDKDir)bin\x86;$(VSInstallDir)Common7\Tools\bin;$(VSInstallDir)Common7\tools;$(VSInstallDir)Common7\ide;$(ProgramFiles)\HTML Help Workshop;$(MSBuildToolsPath32);$(VSInstallDir);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);</ExecutablePath>
+    <IncludePath Condition="'$(IncludePath)' == ''">$(WP80ToolSetPath)include;$(WindowsSDK_IncludePath);</IncludePath>
+    <ReferencePath Condition="'$(ReferencePath)' == ''">$(WP80ToolSetPath)lib</ReferencePath>
+    <LibraryPath Condition="'$(LibraryPath)' == ''">$(WP80ToolSetPath)lib;$(WindowsSDK_LibraryPath_x86);</LibraryPath>
+    <LibraryWPath Condition="'$(LibraryWPath)' == ''">$(WindowsSDK_MetadataPath)</LibraryWPath>
+    <SourcePath Condition="'$(SourcePath)' == ''">$(WP80ToolSetPath)crt\src;$(VCInstallDir)crt\src;</SourcePath>
+    <ExcludePath Condition="'$(ExcludePath)' == ''">$(WP80ToolSetPath)include;$(WindowsSDK_IncludePath);$(MSBuildToolsPath32);$(VCInstallDir)lib;</ExcludePath>
+    <NativeExecutablePath Condition="'$(NativeExecutablePath)' == ''">$(ExecutablePath)</NativeExecutablePath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectCapability Include="WindowsPhoneNativeProject"/>
+  </ItemGroup>
+
+  <ItemDefinitionGroup>
+  <Link>
+    <AppContainer>false</AppContainer>
+    <AdditionalDependencies>WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+  </Link>
+  <FxCompile>
+        <ShaderModel>4.0_level_9_3</ShaderModel>
+        <DisableOptimizations>false</DisableOptimizations> 
+  </FxCompile>  
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(WinMDAssembly)' != 'true'">
+    <Midl>
+      <EnableWindowsRuntime Condition="'%(Midl.EnableWindowsRuntime)' == ''">true</EnableWindowsRuntime>
+      <Enumclass Condition="'%(Midl.Enumclass)' == ''">true</Enumclass>
+      <PrependWithABINamepsace Condition="'%(Midl.PrependWithABINamepsace)' == ''">true</PrependWithABINamepsace>
+      <MetadataFileName Condition="'%(Midl.MetadataFileName)' == ''">$(OutDir)%(Filename).winmd</MetadataFileName>
+      <AdditionalMetadataDirectories>$(WindowsSDK_MetadataPath);%(Midl.AdditionalMetadataDirectories)</AdditionalMetadataDirectories>
+    </Midl>
+  </ItemDefinitionGroup>
+
+  <Import Project="$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\v110_wp80\ImportAfter\*.props" Condition="Exists('$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\v110_wp80\ImportAfter')" />
+
+  <Import Project="$(VCTargetsPath)\Platforms\Win32\Microsoft.Cpp.Win32.Common.props" />
+</Project>

@@ -52,14 +52,12 @@ set visualbell t_vb=            " turn off error beep/flash
 set t_vb=
 set tm=500
 
-
 " show location
 " set cursorcolumn
 set cursorline
 
 " movement
 set scrolloff=7                 " keep 3 lines when scrolling
-
 
 " show
 set ruler                       " show the current row and column
@@ -94,17 +92,17 @@ set softtabstop=4                " insert mode tab and backspace use 4 spaces
 set foldmethod=indent
 set foldlevel=99
 
-let g:FoldMethod = 0
-map <leader>zz :call ToggleFold()<cr>
-fun! ToggleFold()
-    if g:FoldMethod == 0
-        exe "normal! zM"
-        let g:FoldMethod = 1
-    else
-        exe "normal! zR"
-        let g:FoldMethod = 0
-    endif
-endfun
+"let g:FoldMethod = 0
+"map <leader>zz :call ToggleFold()<cr>
+"fun! ToggleFold()
+"    if g:FoldMethod == 0
+"        exe "normal! zM"
+"        let g:FoldMethod = 1
+"    else
+"        exe "normal! zR"
+"        let g:FoldMethod = 0
+"    endif
+"endfun
 
 " encoding =============================
 "
@@ -184,7 +182,7 @@ endfun
 
 " # ============== keys 1 ===========================
 " ===================================================
-" map mouse
+ map mouse
 " # http://vim.wikia.com/wiki/Start_in_insert_mode_without_losing_your_escape_key
 " alias vim='vim -c start'
 
@@ -193,8 +191,8 @@ imap <M-down> <C-o><MouseUp>
 imap <C-up> <C-o>{
 imap <C-down> <C-o>}
 
-imap <Esc> <C-L>
-inoremap jj <ESC>
+" imap <Esc> <C-L>
+" inoremap jj <ESC>
 
 nnoremap <F12> <C-L>:set im!<CR>
 nnoremap <F10> <C-L>:set im!<CR>
@@ -204,6 +202,7 @@ nnoremap <F10> <C-L>:set im!<CR>
 nnoremap <F2> :
 nnoremap <C-:> :
 inoremap <F2> <C-o>:
+inoremap <F12> <C-o>:InsertLeave<CR>
 inoremap <C-:> <C-o>:InsertLeave<CR>
 
 " Insert imap =====================================================
@@ -221,10 +220,13 @@ map -           <C-W>s<C-W><Down>
 "  <A-j> <C-o>j
 " inoremap <A-k> <C-o>k
 " inoremap <A-l> <C-o>l
+<<<<<<< HEAD
 " make files <F9> =================================================
 map <f9> :make
 "set makeprg ??
 
+=======
+>>>>>>> 0cb5880c9c7b3805248a0f583eab62749c708dfb
 " ============================ key map ============================
 " nnoremap k gk
 nnoremap gk k
@@ -245,9 +247,14 @@ set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
 au InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
+<<<<<<< HEAD
 " HELP:   :vert help
 " kj - Esc =========================================================
 inoremap kj <Esc>
+=======
+" kj - Esc
+" inoremap kj <Esc>
+>>>>>>> 0cb5880c9c7b3805248a0f583eab62749c708dfb
 
 " Quickly close the current window
 nnoremap <leader>q :q<CR>

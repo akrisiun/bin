@@ -1,0 +1,1 @@
+ubuntu.exe run "/bin/bash"
