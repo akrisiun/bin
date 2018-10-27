@@ -206,13 +206,26 @@ nnoremap <C-:> :
 inoremap <F2> <C-o>:
 inoremap <C-:> <C-o>:InsertLeave<CR>
 
-" inoremap <A-h> <C-o>h
-" inoremap <A-j> <C-o>j
-" A
+" Insert imap =====================================================
+nmap <C-Up> kP
+nmap <C-Down> j
+imap <C-d> dd
+imap <Esc> <C-o>:set noim<CR>
+
+" Window splits ==================================================
+" Cltr+W + Cltr+W moves between :vplit
+map <Ctrl-Tab>  <C-W>w
+map <Bar>       <C-W>v<W-W><Right>
+map -           <C-W>s<C-W><Down>
+
+"  <A-j> <C-o>j
 " inoremap <A-k> <C-o>k
 " inoremap <A-l> <C-o>l
-" ============================ key map ============================
+" make files <F9> =================================================
+map <f9> :make
+"set makeprg ??
 
+" ============================ key map ============================
 " nnoremap k gk
 nnoremap gk k
 nnoremap j gj
@@ -232,7 +245,8 @@ set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
 au InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
-" kj - Esc
+" HELP:   :vert help
+" kj - Esc =========================================================
 inoremap kj <Esc>
 
 " Quickly close the current window
@@ -274,14 +288,14 @@ vnoremap > >gv
 " map Y y$
 " Map ; to : and save a million keystrokes
 " ex mode commands made easy
-"  nnoremap ; :
+nnoremap ; :
 
 " save
 cmap w!! w !sudo tee >/dev/null %
 
 " command mode, ctrl-a to head， ctrl-e to tail
-cnoremap <C-j> <t_kd>
-cnoremap <C-k> <t_ku>
+" cnoremap <C-j> <t_kd>
+" cnoremap <C-k> <t_ku>
 
-cnoremap <C-a> <C-o><Home>
-cnoremap <C-e> <C-o><End>
+" cnoremap <C-a> <C-o><Home>
+" cnoremap <C-e> <C-o><End>
