@@ -1,0 +1,1 @@
+open -n -F "/Applications/iTerm.app" /usr/local/bin/tmux

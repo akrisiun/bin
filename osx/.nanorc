@@ -1,0 +1,22 @@
+set linenumbers
+#bind ^v menu "uncut"
+unbind M-u all
+bind ^z undo all
+
+syntax "comments" ".*"
+color green "^#.*"
+#color silver "^/*.*"
+set nowrap
+set tabsize 4
+set autoindent
+set brackets ""')>]}"
+set matchbrackets "(]}"
+set smooth
+
+# Ctrl+K delete line
+# Ctrl+U paste (from internal buffer of Alt+A . Alt+6)
+# Ctrl+_ go line $
+
+#unbind ^v all
+#bind ^o writeout all
+#set mouse

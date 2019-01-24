@@ -1,32 +1,19 @@
 #!/usr/bin/env bash
 
+# nano goto Line: Ctrl+Shift+- : 
 # screenFetch - a CLI Bash script to show system/theme info in screenshots
 
 # Copyright (c) 2010-2017 Brett Bohnenkamper <kittykatt@kittykatt.us>
 
 #  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#  it under the terms of the GNU General Public License
 
 # Yes, I do realize some of this is horribly ugly coding. Any ideas/suggestions would be
-# appreciated by emailing me or by stopping by http://github.com/KittyKatt/screenFetch. You
-# could also drop in on the IRC channel at irc://irc.rizon.net/screenFetch.
-# to put forth suggestions/ideas. Thank you.
-
+# appreciated by emailing me or by stopping by http://github.com/KittyKatt/screenFetch.
 # Requires: bash 4.0+
 # Optional dependencies: xorg-xdpyinfo (resoluton detection)
 #                        scrot (screenshot taking)
 #                        curl (screenshot uploading)
-
 
 #LANG=C
 #LANGUAGE=C
@@ -1307,13 +1294,17 @@ detectcpu () {
 	else
 		cpu="$cpu @ ${cpun}${cpufreq}"
 	fi
-	thermal="/sys/class/hwmon/hwmon0/temp1_input"
-	if [ -e $thermal ]; then
-		temp=$(bc <<< "scale=1; $(cat $thermal)/1000")
-	fi
-	if [ -n "$temp" ]; then
-		cpu="$cpu [${temp}°C]"
-	fi
+
+	thermal="-"
+#	temp = ""
+#	thermal="/sys/class/hwmon/hwmon0/temp1_input"
+#	if [ -e $thermal ]; then
+#		temp=$(bc <<< "scale=1; $(cat $thermal)/1000")
+#	fi
+#	if [ -n "$temp" ]; then
+#		cpu="$cpu [${temp}°C]"
+#	fi
+
 	cpu=$(sed $REGEXP 's/\([tT][mM]\)|\([Rr]\)|[pP]rocessor|CPU//g' <<< "${cpu}" | xargs)
 	verboseOut "Finding current CPU...found as '$cpu'"
 }

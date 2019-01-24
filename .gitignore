@@ -4,6 +4,8 @@ wine/
 *.7z
 *.txt
 *.log
+*.bak
+hosts
 .arch.*/
 .backup_*
 [dD]ebug/
@@ -21,3 +23,10 @@ secret.json
 *.swp
 .viminfo
 node_modules/
+Mono.XSP/
+NugetServer/
+xsp4/
+hosts/
+term/term/dist/addons/
+term/nodejs/
+proxy.sh
