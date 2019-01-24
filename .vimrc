@@ -206,8 +206,8 @@ inoremap <F12> <C-o>:InsertLeave<CR>
 inoremap <C-:> <C-o>:InsertLeave<CR>
 
 " Insert imap =====================================================
-nmap <C-Up> kP
-nmap <C-Down> j
+" inoremap <A-h> <C-o>h
+" inoremap <A-j> <C-o>j
 imap <C-d> dd
 imap <Esc> <C-o>:set noim<CR>
 
@@ -220,13 +220,11 @@ map -           <C-W>s<C-W><Down>
 "  <A-j> <C-o>j
 " inoremap <A-k> <C-o>k
 " inoremap <A-l> <C-o>l
-<<<<<<< HEAD
+
 " make files <F9> =================================================
 map <f9> :make
 "set makeprg ??
 
-=======
->>>>>>> 0cb5880c9c7b3805248a0f583eab62749c708dfb
 " ============================ key map ============================
 " nnoremap k gk
 nnoremap gk k
@@ -247,14 +245,9 @@ set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
 au InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
-<<<<<<< HEAD
 " HELP:   :vert help
 " kj - Esc =========================================================
 inoremap kj <Esc>
-=======
-" kj - Esc
-" inoremap kj <Esc>
->>>>>>> 0cb5880c9c7b3805248a0f583eab62749c708dfb
 
 " Quickly close the current window
 nnoremap <leader>q :q<CR>
@@ -301,8 +294,8 @@ nnoremap ; :
 cmap w!! w !sudo tee >/dev/null %
 
 " command mode, ctrl-a to head， ctrl-e to tail
-" cnoremap <C-j> <t_kd>
-" cnoremap <C-k> <t_ku>
+cnoremap <C-j> <t_kd>
+cnoremap <C-k> <t_ku>
 
-" cnoremap <C-a> <C-o><Home>
-" cnoremap <C-e> <C-o><End>
+cnoremap <C-a> <C-o><Home>
+cnoremap <C-e> <C-o><End>
