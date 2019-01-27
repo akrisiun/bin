@@ -1,0 +1,1 @@
+c:\bin\tools\nano-2.5.3-win32\nano.exe %*

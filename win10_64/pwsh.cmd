@@ -1,1 +1,1 @@
-start "" powershell %1 %2 %3 %4 %5
+start "" "c:\Program Files\pwsh\6\pwsh.exe" %*
