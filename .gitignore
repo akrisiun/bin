@@ -30,3 +30,7 @@ hosts/
 term/term/dist/addons/
 term/nodejs/
 proxy.sh
+profile.win10/
+corectl*
+*lock.json
+fonts/
