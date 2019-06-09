@@ -1,1 +1,2 @@
-wine c:/bin/totalcmd/totalcmd.exe &
+export WINEDEBUG=-all 
+/usr/local/bin/wine c:/bin/totalcmd/totalcmd.exe &

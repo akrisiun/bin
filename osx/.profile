@@ -1,2 +1,4 @@
-source ~/.bashrc
+# source ~/.bashrc
+
+exec zsh
 
