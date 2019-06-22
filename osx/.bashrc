@@ -8,7 +8,6 @@
 #PS1='\w\$ '
 #PS1=$(whoami)@$(hostname):$(pwd) $
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
-
 WINEDEBUG=-all
 
 rid='none'
@@ -27,18 +26,20 @@ fi
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-echo "rid=$rid TERM=$TERM PWD=$PWD IP="
+echo "rid=$rid TERM=$TERM PWD=$PWD IP:"
 $(echo 'ifconfig en0') | grep 'inet '
 
 # https://github.com/ronanguilloux/dotfiles/blob/master/.bashrc
 # If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h :>: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+# case "$TERM" in
+# xterm*|rxvt*)
+#    
+# PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h 
+# :>: \w\a\]$PS1"
+#    ;;
+# *)
+#    ;;
+# esac
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -61,7 +62,7 @@ PS1="$GREEN\u@\h$NO_COLOUR:\w$YELLOW\$(parse_git_branch)$NO_COLOUR\$ "
 
 # --- more aliases ----------------------
 alias fuck='sudo $(history -p \!\!)'
-alias services='brew services'
+alias services='brew services '
 alias service='brew services list'
 alias totalcmd='wine c:/bin/totalcmd/totalcmd.exe &'
 alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
@@ -93,8 +94,8 @@ alias lsa='ls -A'           # affiche les fichiers cachés
 alias ll='ls -lh'           # affiche en mode liste détail
 
 alias semaine='date +%V'
-alias ifif='sudo ifdown wlan0 && sudo ifup wlan0'
-alias screencast='ffmpeg -f x11grab -r 25 -s wxga -i :0.0 /tmp/outputFile.mpg'
+# alias ifif='sudo ifdown wlan0 && sudo ifup wlan0'
+# alias screencast='ffmpeg -f x11grab -r 25 -s wxga -i :0.0 /tmp/outputFile.mpg'
 
 #git
 alias gpo='git push origin '
@@ -107,4 +108,8 @@ alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 export SDKMAN_DIR="/Users/andriusk/bin/.sdkman"
 [[ -s "/Users/andriusk/bin/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/andriusk/bin/.sdkman/bin/sdkman-init.sh"
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
+# 01;31 - pink / 00m white / 01;36\ bold green / 02;36 green / 01;33 bold yellow
+# 34 -> 31 (blue)->red, 32 gray, 33 yellow
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]$(pwd) \$\[\033[00m\] '
+export PS1
+

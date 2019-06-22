@@ -61,10 +61,8 @@ PS1="$GREEN\u@\h$NO_COLOUR:\w$YELLOW\$(parse_git_branch)$NO_COLOUR\$ "
 
 # --- more aliases ----------------------
 alias fuck='sudo $(history -p \!\!)'
-
-#for OSX only
-#alias services='brew services'
-#alias service='brew services list'
+alias services='brew services'
+alias service='brew services list'
 alias totalcmd='wine c:/bin/totalcmd/totalcmd.exe &'
 alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 
@@ -82,9 +80,7 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 # alias allIps='for ip in $(seq 1 254); do ping -c 1 192.168.1.$ip>/dev/null; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || : ; done'
 # Add an "alert" alias for long running commands.  Use like so:
 # #   sleep 10; alert
-
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 
 alias ..="cd .."
@@ -97,8 +93,9 @@ alias lsa='ls -A'           # affiche les fichiers cachés
 alias ll='ls -lh'           # affiche en mode liste détail
 
 alias semaine='date +%V'
-#alias ifif='sudo ifdown wlan0 && sudo ifup wlan0'
-#alias screencast='ffmpeg -f x11grab -r 25 -s wxga -i :0.0 /tmp/outputFile.mpg'
+alias ifif='sudo ifdown wlan0 && sudo ifup wlan0'
+alias screencast='ffmpeg -f x11grab -r 25 -s wxga -i :0.0 /tmp/outputFile.mpg'
+
 #git
 alias gpo='git push origin '
 alias gs='git status'
@@ -109,6 +106,3 @@ alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/andriusk/bin/.sdkman"
 [[ -s "/Users/andriusk/bin/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/andriusk/bin/.sdkman/bin/sdkman-init.sh"
-
-export NVM_DIR="/home/andriusk/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

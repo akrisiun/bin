@@ -6,9 +6,6 @@
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
 export DISPLAY=:0
 
-# do nothing if not running interactively
-[ -z "$PS1" ] && return
-
 #export DOCKER_HOST=unix:///private/var/run/docker.sock
 #export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current/lib/mono/4.5
 

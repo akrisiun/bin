@@ -27,10 +27,14 @@ Mono.XSP/
 NugetServer/
 xsp4/
 hosts/
+profile.win10/
 term/term/dist/addons/
 term/nodejs/
 proxy.sh
 profile.win10/
 corectl*
 *lock.json
+fonts/
+qcow-tool
+term/term/
 fonts/
