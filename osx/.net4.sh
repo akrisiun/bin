@@ -1,0 +1,1 @@
+netstat -nr -f inet

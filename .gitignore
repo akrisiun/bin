@@ -34,3 +34,10 @@ corectld
 corectld.runner
 qcow-tool
 term/
+vmrun
+*.msi
+win10_64/**/*.dll
+*.chm
+win10_64/7-Zip/
+win10_64/ConEmu/
+/dotc/
