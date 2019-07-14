@@ -1,0 +1,1 @@
+@powershell c:/bin/c.ps1

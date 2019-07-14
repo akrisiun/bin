@@ -1,0 +1,1 @@
+dotnet build -v diag > diag.log

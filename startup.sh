@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # virtualbox
-vboxmanage list vms
-vboxmanage startvm win22 --type headless
+# vboxmanage list vms
+# vboxmanage startvm win22 --type headless
 
 # docker mssql
 docker ps
