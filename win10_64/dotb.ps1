@@ -1,8 +1,4 @@
-# dotb + args
-
+write-host c:\bin\dotc\dotnet.exe msbuild /t:build /p:GenerateFullPaths=true $args -ForegroundColor Green
 $ErrorActionPreference = 'Stop'
-$a_args = $PsBoundParameters.Values + $args
 
-write-host -f magenta "c:/bin/dotb/dotnet.exe $a_args | $args"
-
-c:/bin/dotb/dotnet.exe $a_args
+c:\bin\dotc\dotnet.exe msbuild /t:build /p:GenerateFullPaths=true $args
