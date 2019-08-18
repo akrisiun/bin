@@ -1,3 +1,7 @@
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
 [user]
 	name = AndriusK
 	email = akrisiun@gmail.com
@@ -22,13 +26,6 @@
     l = "!pretty_git_log"
     la = !git l --all
     ls = ls-files
-[core]
-	excludesfile = /Users/andriusk/.gitignore_global
-	autocrlf = False
-	editor = \"codein\" fileeditor
-#	editor = \"/Users/andriusk/vm/GitExtensions/GitExtensions.exe\" fileeditor
-[pull]
-	rebase = false
 [push]
 	default = simple
 [color]
@@ -38,15 +35,21 @@
 	master = green bold
 	local = green bold
 	remote = cyan bold	
-[credential]
-	helper = cache --timeout=262800
-[i18n]
-	filesEncoding = utf-8
 [core]
-	autocrlf = input
-	eol = native
-[pager]
-	branch = false
+	excludesfile = /Users/andriusk/.gitignore_global
+	autocrlf = False
+	editor = \"code" fileeditor
+#	editor = \"/Users/andriusk/vm/GitExtensions/GitExtensions.exe\" fileeditor
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
@@ -55,5 +58,7 @@
 	autosetuprebase = never
 [merge]
 	tool = kdiff3
+[credential]
+	helper = cache
 [diff]
 	guitool = kdiff3
