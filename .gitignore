@@ -35,6 +35,8 @@ profile.win10/
 corectl*
 hosts/term/
 nodejs/
+qcow-tool
+vmrun
 *.msi
 *.chm
 win10_64/**/*.dll
