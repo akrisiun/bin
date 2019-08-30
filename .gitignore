@@ -48,3 +48,4 @@ term/term/
 fonts/
 /dotc/
 /git/neutrinolabs/
+.DS_Store
