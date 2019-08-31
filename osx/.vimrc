@@ -205,26 +205,11 @@ inoremap <F2> <C-o>:
 inoremap <F12> <C-o>:InsertLeave<CR>
 inoremap <C-:> <C-o>:InsertLeave<CR>
 
-" Insert imap =====================================================
 " inoremap <A-h> <C-o>h
 " inoremap <A-j> <C-o>j
-imap <C-d> dd
-imap <Esc> <C-o>:set noim<CR>
-
-" Window splits ==================================================
-" Cltr+W + Cltr+W moves between :vplit
-map <Ctrl-Tab>  <C-W>w
-map <Bar>       <C-W>v<W-W><Right>
-map -           <C-W>s<C-W><Down>
-
-"  <A-j> <C-o>j
+" A
 " inoremap <A-k> <C-o>k
 " inoremap <A-l> <C-o>l
-
-" make files <F9> =================================================
-" map <f9> :make
-"set makeprg ??
-
 " ============================ key map ============================
 " nnoremap k gk
 nnoremap gk k
@@ -245,8 +230,6 @@ set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
 au InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
-" HELP:   :vert help
-" kj - Esc =========================================================
 " kj - Esc
 " inoremap kj <Esc>
 
@@ -281,7 +264,7 @@ nnoremap <silent> g* g*zz
 " remove highlight
 noremap <silent><leader>/ :nohls<CR>
 
-"Reselect visual block after indent/outdent.
+" Reselect visual block after indent/outdent.
 vnoremap < <gv
 vnoremap > >gv
 

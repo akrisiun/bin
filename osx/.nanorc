@@ -9,8 +9,8 @@ color green "^#.*"
 set nowrap
 set tabsize 4
 set autoindent
-set brackets ""')>]}"
-set matchbrackets "(]}"
+set brackets ")>]}"
+set matchbrackets "(<]}"
 set smooth
 
 # Ctrl+K delete line
