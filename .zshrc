@@ -1,11 +1,28 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
+
 export ZSH="/Users/andriusk/.oh-my-zsh"
+export KUBECONFIG=~/.kube/config
+
+# bash:
+# export PS1='$(whoami)@$(hostname):$(pwd) $ '
+# zsh:
+# export PROMPT="%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%1~ %{$reset_color%} "
+# Short 
+export PROMPT1="%F{yellow}%1 ~ %F{white}"
+# .zsh with no oh-my-zsh
+export PROMPT="%F{magenta}%n%f@%F{yellow}${${(%):-%m}#zoltan-}%f %F{yellow}%1~ %F{white}"
+
+export FrameworkPathOverride="/usr/local/lib/mono/4.5"
+# $env:FrameworkPathOverride="/usr/local/lib/mono/4.5"
+# silver.yml
+# aikube.yml
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
 ZSH_DISABLE_COMPFIX="true"
+VSCODE_PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # export PS1='[green][%* ] %n@%M:%d $ '
 # unset PS1
@@ -19,6 +36,11 @@ ZSH_DISABLE_COMPFIX="true"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true"
+
+setopt RM_STAR_SILENT
+
+# set -o RM_STAR_SILENT
+# setopt
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
@@ -48,6 +70,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
@@ -60,3 +84,4 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export PATH="/usr/local/opt/llvm/bin:$PATH"
