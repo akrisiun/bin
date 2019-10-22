@@ -1,0 +1,1 @@
+start "" C:\bin\GitRelease\GitExtensionsTree.exe %dir%

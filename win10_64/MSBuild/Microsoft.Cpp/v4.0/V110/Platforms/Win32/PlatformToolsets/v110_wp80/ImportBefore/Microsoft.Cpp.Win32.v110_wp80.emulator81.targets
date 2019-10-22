@@ -1,0 +1,27 @@
+﻿<!--
+***********************************************************************************************
+Microsoft.Cpp.Win32.v110_wp81.targets
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+This file defines the steps/targets required to build Visual C++ (version 11.0) projects
+specifically on x86 platforms.
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+***********************************************************************************************
+-->
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ItemGroup Condition="'$(Allow_WindowsPhoneEmulator81)' != 'false' and ('$(ConfigurationType)' == 'Application' or '$(TestApplication)' == 'true')">
+    <AppHostDebuggerPages Condition="'$(IsSlatMachine)' != '0'" Include="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\$(LangID)\WindowsPhoneEmulator81_WVGA512Debugger.xml" />
+    <AppHostDebuggerPages Condition="'$(IsSlatMachine)' != '0'" Include="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\$(LangID)\WindowsPhoneEmulator81_WVGADebugger.xml" />
+    <AppHostDebuggerPages Condition="'$(IsSlatMachine)' != '0'" Include="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\$(LangID)\WindowsPhoneEmulator81_WXVGADebugger.xml" />
+    <AppHostDebuggerPages Condition="'$(IsSlatMachine)' != '0'" Include="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\$(LangID)\WindowsPhoneEmulator81_720PDebugger.xml" />
+    <AppHostDebuggerPages Condition="'$(IsSlatMachine)' != '0'" Include="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\$(LangID)\WindowsPhoneEmulator81_1080PDebugger.xml" />
+    <AppHostDebuggerPages Condition="'$(IsSlatMachine)' != '0'" Include="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\$(LangID)\WindowsPhoneEmulator81_1080P_6in_Debugger.xml" />
+  </ItemGroup>
+  
+</Project>

@@ -1,0 +1,109 @@
+#!/usr/bin/env node
+
+'use strict';
+
+// sudo npm i --global optimist 
+// sudo npm i -g ansi-to-html
+// var argv = require('optimist').argv;
+const node_modules = '/usr/local/lib/node_modules/';
+var argv = require(node_modules + 'optimist').argv;
+var host = "0.0.0.0";
+var port = 3001;
+var verbose = 1;
+
+port = argv.p || argv.port || parseInt(process.env.PORT, 10) || port;
+host = argv.a || host;
+const wait = function () {
+  if (process.platform === 'win32') {
+    require('readline').createInterface({
+      input: process.stdin,
+      output: process.stdout
+    }).on('SIGINT', function () {
+      process.emit('SIGINT');
+    });
+  }
+
+  process.on('SIGINT', function () {
+    console.log('http-server stopped.');
+    process.exit();
+  });
+
+  process.on('SIGTERM', function () {
+    console.log('http-server stopped.');
+    process.exit();
+  });
+}
+
+const fs = require('fs');
+var content = "";
+function readIndex(index, then) {
+   const enc = "binary";
+   fs.readFile(index, enc, function (err, data) {
+      if (err) {
+        console.log("read failure", index, err)
+        then("Error with index file");
+        throw err;
+      }
+      content = data.toString('binary');
+
+      if (content && content.length > 0) {
+        // content = content + ("</pre></code>").toString('binary');
+        if (verbose >= 2 && data.length > 0) {
+            console.log(index, content)
+        }
+        then(content);
+      }
+  });
+}
+
+const os = require('os');
+const home = os.homedir();
+var home_index = home + "/index.html";
+console.log("home", home);
+//  sudo npm i --global ansi-to-html
+var convert = new (require(node_modules + '/ansi-to-html/lib/ansi_to_html.js'));
+const http = require('http');
+var serv = http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  
+  readIndex(home_index, function (content) {
+    var html = content;
+    res.writeHeader(200, {"Content-Type": "text/html"});  
+     
+    res.write('<html><head><title>check</title>');
+    var css = `
+body {
+  background-color: black; color: white;
+}
+@media screen and (prefers-color-scheme: light) {
+  body {
+    background-color: white;
+    color: black;
+  }
+}`;
+    
+    res.write('  <style>' + css + '</style>');
+    res.write('</head><body');
+
+      res.write('Hello World <br>\n');
+    res.write('<pre><code>');
+      var htmlCode = convert.toHtml(html.toString());
+      res.write(htmlCode);
+    res.write('</code></pre>');
+    res.end();
+  });
+});
+
+// verbose = 1; readIndex(home_index, function (content) { console.log(content.toString()) });
+
+// serv.on
+serv.listen(port, host);
+
+// Cyan '\x1b[36m%s
+console.log('\x1b[36mSimple http NodeJs server running at http://' + host + ':' + port + '/');
+console.log('Press Ctrl+C for SIGINT exit. ');
+wait();
+
+// bash ~/bin/myip.sh -f > ~/index.html
+// ~/bin/myhttp -p 3001
+// ssh -L 3001:localhost:3001 $ip sleep 1d &

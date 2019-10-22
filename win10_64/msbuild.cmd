@@ -1,0 +1,1 @@
+"e:\Microsoft Visual Studio\2019\Preview\MSBuild\Current\Bin\msbuild.exe" %*

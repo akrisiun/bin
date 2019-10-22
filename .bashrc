@@ -43,10 +43,12 @@ esac
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+# display
+if [ -f ~/disp.sh ]; then
+    ~/disp.sh
+fi
 
 # -------------------- GIT bashing --------------------
-if [[ $rid == 'darwin' ]]; then
-
 function parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -64,22 +66,22 @@ alias service='brew services list'
 alias totalcmd='wine c:/bin/totalcmd/totalcmd.exe &'
 alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 
-alias fastips='for ip in $(seq 1 20); do echo "1.$ip" && ping -c 1 -W 0.5 192.168.1.$ip>/dev/null; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || :; done'
-alias ips    ='for ip in $(seq 1 254); do echo "1.$ip" && ping -c 1 -W 0.5 192.168.1.$ip ; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || :; done'
+# PATH ........
+# Node.js
+# export PATH=$HOME/local/bin:$PATH
+# Android
+# export PATH=/home/ronan/Bin/android-sdk-linux_x86/tools:${PATH}
+# export PATH=/home/ronan/Bin/android-sdk-linux_x86/platform-tools:${PATH}
+# akeneo author dot files
+# https://github.com/ronanguilloux/dotfiles/blob/master/.bash_aliases
+
+# alias fastips='for ip in $(seq 1 20); do echo "1.$ip" && ping -c 1 -W 0.5 192.168.1.$ip>/dev/null; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || :; done'
+# alias ips    ='for ip in $(seq 1 254); do echo "1.$ip" && ping -c 1 -W 0.5 192.168.1.$ip ; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || :; done'
 # alias allIps='for ip in $(seq 1 254); do ping -c 1 192.168.1.$ip>/dev/null; [ $? -eq 0 ] && echo "192.168.1.$ip UP" || : ; done'
 # Add an "alert" alias for long running commands.  Use like so:
 # #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 # alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
-
-fi
-
-# PATH ........
-# export PATH=/home/ronan/Bin/android-sdk-linux_x86/tools:${PATH}
-# export PATH=/home/ronan/Bin/android-sdk-linux_x86/platform-tools:${PATH}
-
-# akeneo author dot files
-# https://github.com/ronanguilloux/dotfiles/blob/master/.bash_aliases
 
 alias ..="cd .."
 alias ...="cd ../.."

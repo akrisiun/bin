@@ -52,14 +52,12 @@ set visualbell t_vb=            " turn off error beep/flash
 set t_vb=
 set tm=500
 
-
 " show location
 " set cursorcolumn
 set cursorline
 
 " movement
 set scrolloff=7                 " keep 3 lines when scrolling
-
 
 " show
 set ruler                       " show the current row and column
@@ -94,17 +92,17 @@ set softtabstop=4                " insert mode tab and backspace use 4 spaces
 set foldmethod=indent
 set foldlevel=99
 
-let g:FoldMethod = 0
-map <leader>zz :call ToggleFold()<cr>
-fun! ToggleFold()
-    if g:FoldMethod == 0
-        exe "normal! zM"
-        let g:FoldMethod = 1
-    else
-        exe "normal! zR"
-        let g:FoldMethod = 0
-    endif
-endfun
+"let g:FoldMethod = 0
+"map <leader>zz :call ToggleFold()<cr>
+"fun! ToggleFold()
+"    if g:FoldMethod == 0
+"        exe "normal! zM"
+"        let g:FoldMethod = 1
+"    else
+"        exe "normal! zR"
+"        let g:FoldMethod = 0
+"    endif
+"endfun
 
 " encoding =============================
 "
@@ -184,7 +182,7 @@ endfun
 
 " # ============== keys 1 ===========================
 " ===================================================
-" map mouse
+ map mouse
 " # http://vim.wikia.com/wiki/Start_in_insert_mode_without_losing_your_escape_key
 " alias vim='vim -c start'
 
@@ -193,33 +191,26 @@ imap <M-down> <C-o><MouseUp>
 imap <C-up> <C-o>{
 imap <C-down> <C-o>}
 
-" imap <Esc> <C-o>><C-L>
+" imap <Esc> <C-L>
 " inoremap jj <ESC>
 
 nnoremap <F12> <C-L>:set im!<CR>
 nnoremap <F10> <C-L>:set im!<CR>
-inoremap <F12> <C-o>:set im!<CR>
-inoremap <F10> <C-o>:set im!<CR>
 
 " nnoremap <F1> :set im!
 " <CR><c-o>:echo <CR>
 nnoremap <F2> :
 nnoremap <C-:> :
 inoremap <F2> <C-o>:
+inoremap <F12> <C-o>:InsertLeave<CR>
 inoremap <C-:> <C-o>:InsertLeave<CR>
 
-inoremap <Down> <C-o>j
-inoremap <Up> <C-o>k
-" imap <C-n> <Down>
-" imap <C-p> <Up>
-imap <C-@> <C-Space>
-
-inoremap <A-h> <C-o>h
-inoremap <A-j> <C-o>j
-inoremap <A-k> <C-o>k
-inoremap <A-l> <C-o>l
+" inoremap <A-h> <C-o>h
+" inoremap <A-j> <C-o>j
+" A
+" inoremap <A-k> <C-o>k
+" inoremap <A-l> <C-o>l
 " ============================ key map ============================
-
 " nnoremap k gk
 nnoremap gk k
 nnoremap j gj
@@ -240,7 +231,7 @@ au InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 " kj - Esc
-inoremap kj <Esc>
+" inoremap kj <Esc>
 
 " Quickly close the current window
 nnoremap <leader>q :q<CR>
@@ -273,7 +264,7 @@ nnoremap <silent> g* g*zz
 " remove highlight
 noremap <silent><leader>/ :nohls<CR>
 
-"Reselect visual block after indent/outdent.
+" Reselect visual block after indent/outdent.
 vnoremap < <gv
 vnoremap > >gv
 
@@ -287,8 +278,8 @@ vnoremap > >gv
 cmap w!! w !sudo tee >/dev/null %
 
 " command mode, ctrl-a to head， ctrl-e to tail
-" cnoremap <C-j> <t_kd>
-" cnoremap <C-k> <t_ku>
+cnoremap <C-j> <t_kd>
+cnoremap <C-k> <t_ku>
 
-" cnoremap <C-a> <C-o><Home>
-" cnoremap <C-e> <C-o><End>
+cnoremap <C-a> <C-o><Home>
+cnoremap <C-e> <C-o><End>

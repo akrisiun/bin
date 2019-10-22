@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <ItemGroup>
+    <ProjectCapability Include="TypeScriptUAP" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- WWA expects all produced files to have a byte-order mark; here we tell the TypeScript compiler to always produce a UTF-8 BOM. -->
+    <TypeScriptEmitBOM Condition="'$(TypeScriptEmitBOM)' == ''">true</TypeScriptEmitBOM>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptMapRoot>$(MSBuildProjectDirectory)</TypeScriptMapRoot>
+    <TypeScriptSourceRoot>$(MSBuildProjectDirectory)</TypeScriptSourceRoot>
+    <TypeScriptRootDir>$(MSBuildProjectDirectory)</TypeScriptRootDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+
+</Project>
