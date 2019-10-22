@@ -1,1 +1,3 @@
-start "" "c:\Program Files\pwsh\6\pwsh.exe" %*
+@REM sudo choco install -y pwsh
+
+start "" "c:\Program Files\PowerShell\6\pwsh.exe" %*

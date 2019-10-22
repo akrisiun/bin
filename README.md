@@ -5,6 +5,13 @@ My config and binary files for Windows/Osx/Linux
 ```
 git clone https://github.com/akrisiun/bin/
 ln -s ~/bin/.bashrc ~/.bashrc
+
+# or 
+# git remote rm origin 
+git remote add origin https://github.com/akrisiun/bin/
+git branch --set-upstream-to=origin/wsl wsl
+
+git branch --set-upstream-to=origin/win64 win64
 ```
 
 ## Hello world VIM

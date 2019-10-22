@@ -35,6 +35,11 @@ profile.win10/
 corectl*
 hosts/term/
 nodejs/
+<<<<<<< HEAD
+=======
+qcow-tool
+vmrun
+>>>>>>> b7ab01c5dd70a7520514c45aa425e10b2d99cc4c
 *.msi
 *.chm
 win10_64/**/*.dll
@@ -48,6 +53,7 @@ term/term/
 fonts/
 /dotc/
 /git/neutrinolabs/
+<<<<<<< HEAD
 .DS_Store
 GitExt/
 vfp/
@@ -55,3 +61,5 @@ vscode
 wine32-dotnet1-fail/
 winenet45/
 
+=======
+>>>>>>> b7ab01c5dd70a7520514c45aa425e10b2d99cc4c

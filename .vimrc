@@ -210,6 +210,14 @@ inoremap <C-:> <C-o>:InsertLeave<CR>
 " A
 " inoremap <A-k> <C-o>k
 " inoremap <A-l> <C-o>l
+<<<<<<< HEAD
+=======
+
+" make files <F9> =================================================
+" map <f9> :make
+"set makeprg ??
+
+>>>>>>> b7ab01c5dd70a7520514c45aa425e10b2d99cc4c
 " ============================ key map ============================
 " nnoremap k gk
 nnoremap gk k
@@ -230,6 +238,11 @@ set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
 au InsertLeave * set nopaste
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
+<<<<<<< HEAD
+=======
+" HELP:   :vert help
+" kj - Esc =========================================================
+>>>>>>> b7ab01c5dd70a7520514c45aa425e10b2d99cc4c
 " kj - Esc
 " inoremap kj <Esc>
 
