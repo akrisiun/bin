@@ -8,9 +8,9 @@ sudo apt-get install -y xfce4 xfce4-goodies tightvncserver -y
 dpkg-reconfigure x11-common
 ```
 
-/etc/X11/Xwrapper.config
+## /etc/X11/Xwrapper.config
 
-This file has as setting called â`allowed_users`
+This file has as setting called `allowed_users`
 It can accept three values:
 
 1. root
