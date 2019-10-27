@@ -1,10 +1,11 @@
 #!/usr/bin/env node
+// sudo npm i --global optimist
+// sudo ln -s /usr/local/nvm/versions/node/v10.14.2/lib/node_modules/  /usr/local/lib/node_modules
 
 'use strict';
 
-// sudo npm i --global optimist 
 // var argv = require('optimist').argv;
-var argv = require('/usr/lib/node_modules/optimist').argv;
+var argv = require('/usr/local/lib/node_modules/optimist').argv;
 var host = "0.0.0.0";
 var port = 3001;
 var verbose = 2;
@@ -59,7 +60,7 @@ const home = os.homedir();
 var home_index = home + "/index.html";
 console.log("home", home);
 //  sudo npm i --global ansi-to-html
-var convert = new (require('/usr/lib/node_modules/ansi-to-html/lib/ansi_to_html.js'));
+var convert = new (require('/usr/local/lib/node_modules/ansi-to-html/lib/ansi_to_html.js'));
 const http = require('http');
 var serv = http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
