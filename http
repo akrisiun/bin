@@ -1,8 +1,8 @@
 #!/usr/bin/env node
+// sudo npm i -g optimist ansi-to-html
 
 'use strict';
 
-//  sudo npm i --global optimist 
 // var argv = require('optimist').argv;
 var argv = require('/usr/lib/node_modules/optimist').argv;
 var host = "0.0.0.0";
