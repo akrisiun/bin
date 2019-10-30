@@ -1,0 +1,17 @@
+{
+    "remote.SSH.showLoginTerminal": true,
+    "terminal.integrated.rendererType": "dom",
+    "git.confirmSync": false,
+    "extensions.ignoreRecommendations": true,
+    "terminal.external.windowsExec": "powershell",
+    "terminal.integrated.confirmOnExit": true,
+    "terminal.integrated.splitCwd": "workspaceRoot",
+    "debug.node.autoAttach": "off",
+    "files.exclude": {
+        "**/node_modules/": true,
+        "yarn.lock": true
+    },
+    "explorer.confirmDelete": false,
+    "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
+    "terminal.integrated.shellArgs.linux": [ "zsh" ]
+}

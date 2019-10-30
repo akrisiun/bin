@@ -6,6 +6,7 @@ sudo apt-get install -y libgtk-3-0
 sudo apt-get install -y xfce4 xfce4-goodies tightvncserver -y
 sudo apt-get install -y x11-apps
 sudo apt-get install -y xvfb x11vnc xdotool wget tar supervisor net-tools
+sudo apt-get install -y xauth xorg  net-tools x11-apps dnsutils
 
 # dpkg-reconfigure x11-common
 sudo /etc/init.d/x11-common restart
