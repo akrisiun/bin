@@ -1,25 +1,31 @@
-// #!/usr/bin/env node 
+#!/usr/bin/env node
 // node ./linux-dash/server/index.js
 
-var express = require('express')
-var server  = require('http').Server(app)
-var path    = require('path')
-var spawn   = require('child_process').spawn
+const express = require('express')
+const http  = require('http')
+const path    = require('path')
+const spawn   = require('child_process').spawn
 var fs      = require('fs')
 var ws      = require('websocket').server
 var args    = require('yargs').argv
 var port    = args.port || process.env.LINUX_DASH_SERVER_PORT || 8000
-// var app     = require('express')()
+// const server  = http.Server(app)
 
-var app     = express()
+var app    = express();
+var server = http.Server(app);
+var verbose = 2;
+server.listen(port, "0.0.0.0");
 
+/* // Tcp6 :-(
 server.listen(port, function() {
-  console.log('Linux Dash Server Started on port ' + port + '!');
-})
+  console.log('Linux Dash server Started on port ' + port + '!');
+}) */
 
 app.use(express.static(path.resolve(__dirname + '/../')))
 
 app.get('/', function (req, res) {
+  if (verbose >= 2)
+      console.log("req", req);
 	res.sendFile(path.resolve(__dirname + '/../index.html'))
 })
 
@@ -81,3 +87,18 @@ app.get('/server/', function (req, res) {
 
   getPluginData(req.query.module, respondWithData)
 })
+
+console.log(`Linux Dash server listening on port ${port}. Press Ctrl+C to stop\n`);
+
+const wait = function () {
+  process.on('SIGINT', function () {
+    console.log(' http-server stopped.');
+    process.exit();
+  });
+  process.on('SIGTERM', function () {
+    console.log(' http-server stopped.');
+    process.exit();
+  });
+}
+
+wait();
