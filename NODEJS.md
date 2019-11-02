@@ -12,7 +12,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
 source ~/.bashrc
 export PS1="$ "
 nvm -v
-nvm install 10.0
+nvm install 10.17.0
 nvm use 10.0
 
 node -v
