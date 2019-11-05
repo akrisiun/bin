@@ -24,8 +24,8 @@
     "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
     "terminal.integrated.shellArgs.linux": [ "zsh" ],
     "powershell.promptToUpdatePowerShell": false,
-    
-    "workbench.colorTheme": "Solarized Dark",
+
+    "workbench.colorTheme": "Visual Studio Dark",
     "workbench.enableExperiments": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
     "update.mode": "manual",
