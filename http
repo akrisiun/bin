@@ -1,33 +1,34 @@
 #!/usr/bin/env node
-<<<<<<< HEAD
+// sudo npm i -g optimist ansi-to-html
 
 'use strict';
 
-// sudo npm i --global optimist 
-// sudo npm i -g ansi-to-html
 // var argv = require('optimist').argv;
 const node_modules = '/usr/local/lib/node_modules/';
 var argv = require(node_modules + 'optimist').argv;
 var host = "0.0.0.0";
-var port = 3001;
-var verbose = 1;
-=======
-// sudo npm i -g optimist ansi-to-html
-// sudo ln -s /usr/local/nvm/versions/node/v10.14.2/lib/node_modules  /usr/local/lib/node_modules
-// sudo ln -s /home/$USER/.nvm/versions/node/v10.0.0/lib/node_modules /usr/local/lib/node_modules
-
-'use strict';
-
-// var argv = require('optimist').argv;
-var node_modules = '/usr/local/lib/node_modules/';
-var argv = require(node_modules + 'optimist').argv;
-var host = "0.0.0.0";
-var port = 3001;
-var verbose = 2;
->>>>>>> origin/master
+var port = 3000;
+var verbose = 1
 
 port = argv.p || argv.port || parseInt(process.env.PORT, 10) || port;
 host = argv.a || host;
+
+const exec = require('child_process').exec;
+
+console.log('exec', './myip.sh -n 10 > ~/index.html');
+exec ('./myip.sh -n 10 > ~/index.html');
+exec ('echo "service --status-all\n" >> ~/index.html');
+exec ('sudo service --status-all >> ~/index.html');
+
+var options = { };
+var ssl = 0; // TODO:
+if (ssl) {
+    options.https = {
+      cert: argv.C || argv.cert || 'cert.pem',
+      key: argv.K || argv.key || 'key.pem'
+    };
+  }
+
 const wait = function () {
   if (process.platform === 'win32') {
     require('readline').createInterface({
@@ -76,11 +77,10 @@ const home = os.homedir();
 var home_index = home + "/index.html";
 console.log("home", home);
 //  sudo npm i --global ansi-to-html
-<<<<<<< HEAD
-var convert = new (require(node_modules + '/ansi-to-html/lib/ansi_to_html.js'));
-=======
+//  https://github.com/rburns/ansi-to-html
 var convert = new (require(node_modules + 'ansi-to-html/lib/ansi_to_html.js'));
->>>>>>> origin/master
+//  console.log(convert.toHtml('\x1b[30mblack\x1b[37mwhite'));
+
 const http = require('http');
 var serv = http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -92,28 +92,12 @@ var serv = http.createServer(function (req, res) {
     res.write('<html><head><title>check</title>');
     var css = `
 body {
-<<<<<<< HEAD
-  background-color:#206C80;
-  color: white;
-  font-size: 120%;
-}
-a, a:visited {
-  color: #40F0F0;
-}
-@media screen and (prefers-color-scheme: light) {
-  body {
-    background-color: white; color: black;
-  }
-  a, a:visited {
-    color: blue;
-=======
   background-color: black; color: white;
 }
 @media screen and (prefers-color-scheme: light) {
   body {
     background-color: white;
     color: black;
->>>>>>> origin/master
   }
 }`;
     
@@ -129,8 +113,8 @@ a, a:visited {
   });
 });
 
+// test index
 // verbose = 1; readIndex(home_index, function (content) { console.log(content.toString()) });
-
 // serv.on
 serv.listen(port, host);
 
@@ -139,6 +123,9 @@ console.log('\x1b[36mSimple http NodeJs server running at http://' + host + ':' 
 console.log('Press Ctrl+C for SIGINT exit. ');
 wait();
 
-// bash ~/bin/myip.sh -f > ~/index.html
-// ~/bin/myhttp -p 3001
-// ssh -L 3001:localhost:3001 $ip sleep 1d &
+// ~/bin/myip.sh > index.html
+// ~/bin/http -p 3001
+// ssh -L 3001:localhost:3001 $ip
+
+// ~/bin/http -p 3000 &
+// ssh -L 3000:localhost:3000 $ip sleep 1d &

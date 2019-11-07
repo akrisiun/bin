@@ -1,0 +1,13 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "websocket": "^1.0.30",
+    "yargs": "^14.2.0"
+  }
+}

@@ -5,13 +5,20 @@
 export ZSH="/Users/andriusk/.oh-my-zsh"
 export KUBECONFIG=~/.kube/config
 
+# v10.16.3
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
 # bash:
 # export PS1='$(whoami)@$(hostname):$(pwd) $ '
 # zsh:
 # export PROMPT="%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%1~ %{$reset_color%} "
-# Short 
+# Short
 export PROMPT1="%F{yellow}%1 ~ %F{white}"
 # .zsh with no oh-my-zsh
+
 export PROMPT="%F{magenta}%n%f@%F{yellow}${${(%):-%m}#zoltan-}%f %F{yellow}%1~ %F{white}"
 
 export FrameworkPathOverride="/usr/local/lib/mono/4.5"
@@ -85,3 +92,9 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+export LC_NUMERIC="en_LT"
+export LC_TIME="en_LT"
+export LC_COLLATE="en_LT"
+export LC_MONETARY="en_LT"
+export LC_MESSAGES="en_LT"

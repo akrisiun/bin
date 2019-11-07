@@ -1,0 +1,6 @@
+# This is Git's per-user configuration file.
+# cp gitconfig ~/.gitconfig
+[user]
+# Please adapt and uncomment the following lines:
+	name = Andrius-K
+	email = akrisiun@gmail.com

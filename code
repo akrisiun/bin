@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# https://dev.to/babak/how-to-run-vs-code-on-the-server-3c7h
+# ssh -N -L 0.0.0.0:8443:localhost:8443 login@your-server 2> /dev/null
+
+abs=$(realpath .)
+req=$1
+
+if [[ ! $1 =~ ^\/ ]];
+then
+  req="$abs/$1"
+fi;
+
+if [[ ! -d $req ]];
+then
+  echo "ERROR: path does not exist"
+  echo "$req"
+  exit;
+fi;
+
+~/code-server/code-server $req --no-auth

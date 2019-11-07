@@ -54,6 +54,7 @@ fonts/
 /dotc/
 /git/neutrinolabs/
 <<<<<<< HEAD
+<<<<<<< HEAD
 .DS_Store
 GitExt/
 vfp/
@@ -63,3 +64,6 @@ winenet45/
 
 =======
 >>>>>>> b7ab01c5dd70a7520514c45aa425e10b2d99cc4c
+=======
+*.ovpn
+>>>>>>> origin/master

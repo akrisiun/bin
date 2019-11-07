@@ -1,0 +1,50 @@
+{
+    // C:\Users\akris\AppData\Roaming\Code\User\settings.json
+    "scm.alwaysShowActions": true,
+    "scm.alwaysShowProviders": true,
+    "workbench.view.alwaysShowHeaderActions": true,
+    "workbench.startupEditor": "newUntitledFile",
+
+    "debug.node.autoAttach": "on",
+    "files.exclude": {
+        "**/*.csproj.user": true,
+        "**/*.exe": true,
+        "**/*.zip": true,
+        "**/bin/": true,
+        "**/obj/": true,
+        "**/node_modules/": true,
+        "yarn.lock": true
+    },
+    "terminal.integrated.shell.windows": "c:\\Program Files\\PowerShell\\6\\pwsh.exe",
+    "terminal.integrated.rendererType": "dom",
+    "explorer.confirmDelete": false,
+    "git.confirmSync": false,
+
+    "editor.fontFamily": "DejaVu Sans Mono for Powerline",
+    "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
+    "terminal.integrated.shellArgs.linux": [ "zsh" ],
+    "powershell.promptToUpdatePowerShell": false,
+
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "update.mode": "manual",
+    "update.showReleaseNotes": false,
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
+    "git.autofetch": false,
+    "telemetry.enableTelemetry": false,
+    "extensions.showRecommendationsOnlyOnDemand": true,
+    "extensions.ignoreRecommendations": true,
+
+    "terminal.external.windowsExec": "powershell",
+    "terminal.integrated.confirmOnExit": true,
+    "terminal.integrated.splitCwd": "workspaceRoot",
+    "[jsonc]": {
+    },
+    "[json]": {
+    },
+    "files.associations": {
+        "*.json": "jsonc"
+    },
+}
