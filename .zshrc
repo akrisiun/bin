@@ -7,9 +7,8 @@ export KUBECONFIG=~/.kube/config
 
 # v10.16.3
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
+#[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+#[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # bash:
 # export PS1='$(whoami)@$(hostname):$(pwd) $ '
@@ -24,7 +23,6 @@ export PROMPT="%F{magenta}%n%f@%F{yellow}${${(%):-%m}#zoltan-}%f %F{yellow}%1~ %
 export FrameworkPathOverride="/usr/local/lib/mono/4.5"
 # $env:FrameworkPathOverride="/usr/local/lib/mono/4.5"
 # silver.yml
-# aikube.yml
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
@@ -48,20 +46,7 @@ setopt RM_STAR_SILENT
 
 # set -o RM_STAR_SILENT
 # setopt
-
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
@@ -80,21 +65,20 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # User configuration
-# export MANPATH="/usr/local/man:$MANPATH"
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export MANPATH="/usr/local/man:$MANPATH"
 
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
-# For a full list of active aliases, run `alias`.
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="/usr/local/opt/llvm/bin:$PATH"
-
 export LC_NUMERIC="en_LT"
 export LC_TIME="en_LT"
 export LC_COLLATE="en_LT"
 export LC_MONETARY="en_LT"
 export LC_MESSAGES="en_LT"
+
