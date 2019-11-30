@@ -1,5 +1,7 @@
-#!/bin/zsh
-
+#!/bin/bash
+#
+# ~/bin/debian9/setup.sh
+#
 echo "Install links to ~"
 
 echo "~/.tmux.conf"

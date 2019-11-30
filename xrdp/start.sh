@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/bin/supervisord -n
+sudo /usr/bin/supervisord -n
