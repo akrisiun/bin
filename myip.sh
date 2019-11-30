@@ -1,32 +1,25 @@
 #!/bin/bash
 
 export n=9
-<<<<<<< HEAD
 # echo $argv
-if [ $1="-f" ]; then
-=======
-
 if [[ $1 = '-n' ]]; then
     export n=$2
 fi
+
 if [[ $1 = "-f" ]]; then
->>>>>>> origin/master
    export n=30
 # else
 fi
 
-<<<<<<< HEAD
 if [ $n=9 ]; then
    echo "~/bin/myip.sh:"
 fi
-=======
 # https://linuxize.com/post/bash-if-else-statement/
 # echo [ $argv 0=$0 1=$1 2=$2 n=$n ]
 if [ $n -eq 8 ]; then
    echo "~/bin/myip.sh:"
 fi
 
->>>>>>> origin/master
 printf "\n My external IP address: \e[1m"
 curl -s http://ipecho.net/plain
 
@@ -41,9 +34,6 @@ ip addr show en0 | grep inet
 # colors prinft:  [34 - blue, 31-red   35m - Magenta  92 -lt green  37m - lt gray
 # \e[0m  reset  \e1m - bold
 printf " \n"
-<<<<<<< HEAD
-~/bin/screenfetch-dev | head -n $n
-=======
 
 if [ -f ~/bin/screenfetch-dev ]; then
     ~/bin/screenfetch-dev | head -n $n
@@ -52,7 +42,6 @@ else
    ./screenfetch-dev | head -n $n
 fi
 
->>>>>>> origin/master
 printf "\n\e[0m"
 
 # bash ~/bin/myip.sh -f > ~/index.html

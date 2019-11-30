@@ -9,8 +9,10 @@
 #PS1=$(whoami)@$(hostname):$(pwd) $
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
 
-WINEDEBUG=-all
+# macOs iTerm2 problem with Alt key:
+# Cmd+., Profiles, Keys and choose Left option Key acts as: +Esc.
 
+WINEDEBUG=-all
 rid='none'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
@@ -69,6 +71,7 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 # PATH ........
 # Node.js
 # export PATH=$HOME/local/bin:$PATH
+
 # Android
 # export PATH=/home/ronan/Bin/android-sdk-linux_x86/tools:${PATH}
 # export PATH=/home/ronan/Bin/android-sdk-linux_x86/platform-tools:${PATH}
@@ -81,21 +84,20 @@ alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 # Add an "alert" alias for long running commands.  Use like so:
 # #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-# alias wtf='tail -f /var/log/{dmesg,messages,*{,/*}{log,err}}'
 
 alias ..="cd .."
 alias ...="cd ../.."
 
 alias la='ls -la'
+alias lsd='lsd -d */'
 alias l='ls -la'
 # alias lsd='ls -h --color --group-directories-first'
 alias lsa='ls -A'           # affiche les fichiers cachés
 alias ll='ls -lh'           # affiche en mode liste détail
 
 alias semaine='date +%V'
-alias ifif='sudo ifdown wlan0 && sudo ifup wlan0'
-alias screencast='ffmpeg -f x11grab -r 25 -s wxga -i :0.0 /tmp/outputFile.mpg'
-
+# alias ifif='sudo ifdown wlan0 && sudo ifup wlan0'
+# alias screencast='ffmpeg -f x11grab -r 25 -s wxga -i :0.0 /tmp/outputFile.mpg'
 #git
 alias gpo='git push origin '
 alias gs='git status'
@@ -104,5 +106,5 @@ alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 
 # sdk
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/andriusk/bin/.sdkman"
-[[ -s "/Users/andriusk/bin/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/andriusk/bin/.sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="/Users/andriusk/bin/.sdkman"
+# [[ -s "/Users/andriusk/bin/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/andriusk/bin/.sdkman/bin/sdkman-init.sh"
