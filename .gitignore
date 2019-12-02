@@ -53,8 +53,6 @@ term/term/
 fonts/
 /dotc/
 /git/neutrinolabs/
-<<<<<<< HEAD
-<<<<<<< HEAD
 .DS_Store
 GitExt/
 vfp/
@@ -62,5 +60,9 @@ vscode
 wine32-dotnet1-fail/
 winenet45/
 *.ovpn
+win10_64/Choco/chocolateyInstall/
+7*.dll
+F*.vsix
 *.deb
 *.deb.*
+

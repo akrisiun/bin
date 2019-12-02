@@ -1,20 +1,17 @@
 #!/usr/bin/env node
-<<<<<<< HEAD
 
 'use strict';
 
-// sudo npm i --global optimist 
-// sudo npm i -g ansi-to-html
+// sudo npm i -g optimist ansi-to-html
+// sudo ln -s /usr/local/nvm/versions/node/v10.14.2/lib/node_modules  /usr/local/lib/node_modules
+// sudo ln -s /home/$USER/.nvm/versions/node/v10.0.0/lib/node_modules /usr/local/lib/node_modules
 // var argv = require('optimist').argv;
+
 const node_modules = '/usr/local/lib/node_modules/';
 var argv = require(node_modules + 'optimist').argv;
 var host = "0.0.0.0";
 var port = 3001;
 var verbose = 1;
-=======
-// sudo npm i -g optimist ansi-to-html
-// sudo ln -s /usr/local/nvm/versions/node/v10.14.2/lib/node_modules  /usr/local/lib/node_modules
-// sudo ln -s /home/$USER/.nvm/versions/node/v10.0.0/lib/node_modules /usr/local/lib/node_modules
 
 'use strict';
 
@@ -76,11 +73,7 @@ const home = os.homedir();
 var home_index = home + "/index.html";
 console.log("home", home);
 //  sudo npm i --global ansi-to-html
-<<<<<<< HEAD
-var convert = new (require(node_modules + '/ansi-to-html/lib/ansi_to_html.js'));
-=======
 var convert = new (require(node_modules + 'ansi-to-html/lib/ansi_to_html.js'));
->>>>>>> origin/master
 const http = require('http');
 var serv = http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -92,7 +85,6 @@ var serv = http.createServer(function (req, res) {
     res.write('<html><head><title>check</title>');
     var css = `
 body {
-<<<<<<< HEAD
   background-color:#206C80;
   color: white;
   font-size: 120%;
@@ -106,14 +98,12 @@ a, a:visited {
   }
   a, a:visited {
     color: blue;
-=======
-  background-color: black; color: white;
-}
-@media screen and (prefers-color-scheme: light) {
+    background-color: black; color: white;
+  }
+  @media screen and (prefers-color-scheme: light) {
   body {
     background-color: white;
     color: black;
->>>>>>> origin/master
   }
 }`;
     

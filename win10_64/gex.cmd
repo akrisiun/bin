@@ -1,1 +1,3 @@
-start "" C:\bin\GitRelease\GitExtensionsTree.exe %dir%
+@REM gex - GitExtensionsTree.exe 
+
+start "" c:\bin\GitRelease\GitExtensionsTree.exe %*
