@@ -1,0 +1,1 @@
+wine c:/bin/totalcmd/totalcmd.exe 2> /dev/null
