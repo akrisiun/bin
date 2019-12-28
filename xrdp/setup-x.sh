@@ -19,7 +19,7 @@ function apt() {
     sudo apt install -y xfce4-terminal 
     echo xfce4-session > ~/.xsession
 
-    sudo chown andriusk /etc/xrdp/startwm.sh
+    sudo chown $USER /etc/xrdp/startwm.sh
     cat /etc/X11/Xsession
     hostname -I
 
@@ -38,7 +38,7 @@ function chromium() {
 
     sudo apt-get update
     sudo apt --fix-broken install -y
-    sudo apt install -y desktop-file-utils mime-support man-db fonts-liberation libu2f-udev
+    sudo apt install -y desktop-file-utils mime-support man-db fonts-liberation libu2f-udevs
 
     sudo dpkg -i google-chrome-stable_current_amd64.deb
 
