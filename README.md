@@ -3,10 +3,20 @@
 My config and binary files for Windows/Osx/Linux
 
 ```
-git clone https://github.com/akrisiun/bin/
+git clone https://github.com/akrisiun/bin/ -b debian
 ln -s ~/bin/.bashrc ~/.bashrc
 
-# or 
+git status
+git branch
+# or  #2
+
+cat ~/.ssh/id_ed25519.pub
+https://github.com/settings/ssh/new
+git remote rm origin
+git remote add origin git@github.com:akrisiun/bin.git
+git push -u origin debian
+
+# or  #3
 # git remote rm origin 
 git remote add origin https://github.com/akrisiun/bin/
 git branch --set-upstream-to=origin/wsl wsl
