@@ -18,7 +18,11 @@ sudo chown andriusk /usr/local/bin
 # chmod +x /usr/local/bin/http-server
 # http-server . -p 9099
 
-ln -s ~/bin/http /usr/local/bin/http
+# if [ -f "$FILE" ]; then
+if not [ ! -f  /usr/local/bin/http ]; then
+   ln -s ~/bin/http /usr/local/bin/http
+fi
+
 chmod +x /usr/local/bin/http
 # http -p 3001
 # ssh -L 3000:localhost:3000 $ip sleep 1d &

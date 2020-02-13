@@ -1,0 +1,281 @@
+// Place your key bindings in this file to override the defaults
+// Place your key bindings in this file to override the defaultsauto[]
+// ~/Library/Application Support/code-oss-dev/User/keybindings.json
+// cp ~/Library/Application\ Support/code-oss-dev/User/keybindings.json ~/bin/User
+// cp ~/Library/Application\ Support/code-oss-dev/User/keybindings.json /var/www/User
+[
+	{
+		"key": "ctrl+c",
+		"command": "editor.action.clipboardCopyAction",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+c",
+		"command": "-editor.action.clipboardCopyAction",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+c",
+		"command": "editor.action.clipboardCopyAction",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+c",
+		"command": "-editor.action.clipboardCopyAction",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+delete",
+		"command": "editor.action.clipboardCutAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+x",
+		"command": "-editor.action.clipboardCutAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+x",
+		"command": "editor.action.clipboardCutAction",
+		"when": "textInputFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+x",
+		"command": "-editor.action.clipboardCutAction",
+		"when": "textInputFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+delete",
+		"command": "-editor.action.clipboardCutAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+s",
+		"command": "workbench.action.files.saveAll"
+	},
+	{
+		"key": "ctrl+s",
+		"command": "-workbench.action.files.saveAll"
+	},
+	{
+		"key": "ctrl+u",
+		"command": "cursorUndo",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+u",
+		"command": "-cursorUndo",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+f",
+		"command": "actions.find"
+	},
+	{
+		"key": "cmd+f",
+		"command": "-actions.find"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "editor.action.nextMatchFindAction",
+		"when": "editorFocus"
+	},
+	{
+		"key": "cmd+g",
+		"command": "-editor.action.nextMatchFindAction",
+		"when": "editorFocus"
+	},
+	{
+		"key": "ctrl+f3",
+		"command": "editor.action.nextSelectionMatchFindAction",
+		"when": "editorFocus"
+	},
+	{
+		"key": "cmd+f3",
+		"command": "-editor.action.nextSelectionMatchFindAction",
+		"when": "editorFocus"
+	},
+	{
+		"key": "ctrl+e",
+		"command": "actions.findWithSelection"
+	},
+	{
+		"key": "cmd+e",
+		"command": "-actions.findWithSelection"
+	},
+	{
+		"key": "ctrl+h",
+		"command": "editor.action.startFindReplaceAction"
+	},
+	{
+		"key": "alt+cmd+f",
+		"command": "-editor.action.startFindReplaceAction"
+	},
+	{
+		"key": "ctrl+shift+f",
+		"command": "workbench.action.findInFiles"
+	},
+	{
+		"key": "shift+cmd+f",
+		"command": "-workbench.action.findInFiles"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "workbench.action.terminal.findNext",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "cmd+g",
+		"command": "-workbench.action.terminal.findNext",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "workbench.action.terminal.findNext",
+		"when": "terminalFindWidgetFocused"
+	},
+	{
+		"key": "cmd+g",
+		"command": "-workbench.action.terminal.findNext",
+		"when": "terminalFindWidgetFocused"
+	},
+	{
+		"key": "cmd+x",
+		"command": "-editor.action.clipboardCutAction",
+		"when": "textInputFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+x",
+		"command": "execCut"
+	},
+	{
+		"key": "cmd+x",
+		"command": "-execCut"
+	},
+	{
+		"key": "ctrl+x",
+		"command": "filesExplorer.cut",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+	},
+	{
+		"key": "cmd+x",
+		"command": "-filesExplorer.cut",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+	},
+	{
+		"key": "ctrl+up",
+		"command": "cursorTop",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "cmd+up",
+		"command": "-cursorTop",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "ctrl+x",
+		"command": "editor.action.webvieweditor.cut",
+		"when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'"
+	},
+	{
+		"key": "cmd+x",
+		"command": "-editor.action.webvieweditor.cut",
+		"when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'"
+	},
+	{
+		"key": "ctrl+shift+n",
+		"command": "workbench.action.newWindow"
+	},
+	{
+		"key": "shift+cmd+n",
+		"command": "-workbench.action.newWindow"
+	},
+	{
+		"key": "ctrl+k",
+		"command": "workbench.action.terminal.clear",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "cmd+k",
+		"command": "-workbench.action.terminal.clear",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "ctrl+c",
+		"command": "workbench.action.terminal.copySelection",
+		"when": "terminalFocus && terminalTextSelected"
+	},
+	{
+		"key": "cmd+c",
+		"command": "-workbench.action.terminal.copySelection",
+		"when": "terminalFocus && terminalTextSelected"
+	},
+	{
+		"key": "ctrl+right",
+		"command": "workbench.action.terminal.moveToLineEnd",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "cmd+right",
+		"command": "-workbench.action.terminal.moveToLineEnd",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "home",
+		"command": "workbench.action.terminal.moveToLineStart",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "cmd+left",
+		"command": "-workbench.action.terminal.moveToLineStart",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "ctrl+c",
+		"command": "keybindings.editor.copyKeybindingEntry",
+		"when": "inKeybindings && keybindingFocus"
+	},
+	{
+		"key": "cmd+c",
+		"command": "-keybindings.editor.copyKeybindingEntry",
+		"when": "inKeybindings && keybindingFocus"
+	},
+	{
+		"key": "ctrl+up",
+		"command": "list.collapse",
+		"when": "listFocus && !inputFocus"
+	},
+	{
+		"key": "cmd+up",
+		"command": "-list.collapse",
+		"when": "listFocus && !inputFocus"
+	},
+	{
+		"key": "ctrl+f12",
+		"command": "editor.action.goToImplementation",
+		"when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+	},
+	{
+		"key": "cmd+f12",
+		"command": "-editor.action.goToImplementation",
+		"when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+	},
+	{
+		"key": "ctrl+j",
+		"command": "workbench.action.togglePanel"
+	},
+	{
+		"key": "cmd+j",
+		"command": "-workbench.action.togglePanel"
+	},
+	{
+		"key": "ctrl+v",
+		"command": "editor.action.webvieweditor.paste",
+		"when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'"
+	},
+	{
+		"key": "cmd+v",
+		"command": "-editor.action.webvieweditor.paste",
+		"when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'"
+	}
+]

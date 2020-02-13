@@ -65,4 +65,4 @@ win10_64/Choco/chocolateyInstall/
 F*.vsix
 *.deb
 *.deb.*
-
+**/

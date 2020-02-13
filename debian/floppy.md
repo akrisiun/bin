@@ -1,6 +1,6 @@
 # USB 
-sudo modprobe usb_storage
 
+sudo modprobe usb_storage
 
 # RM Floppy Legacy device
 

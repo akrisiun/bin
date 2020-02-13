@@ -5,4 +5,3 @@ export WINEDEBUG=-all
 # /usr/local/bin/wine64 
 wine c:/bin/totalcmd/totalcmd.exe 2> /dev/null &
 
-
