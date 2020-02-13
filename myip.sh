@@ -21,8 +21,8 @@ if [ $n -eq 8 ]; then
 fi
 
 echo "\$OSTYPE= $OSTYPE"
-printf "\n My external IP address: \e[1m"
-curl -s http://ipecho.net/plain
+# printf "\n My external IP address: \e[1m"
+# curl -s http://ipecho.net/plain
 
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
 printf "\n\e[36m ip route interface: "
