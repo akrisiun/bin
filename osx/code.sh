@@ -1,1 +1,3 @@
-open /Applications/Visual\ Studio\ Code.app/ @*
+open /Applications/Visual\ Studio\ Code.app/ $@
+
+# @*
