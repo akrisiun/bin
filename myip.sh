@@ -35,8 +35,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 elif [[ "$OSTYPE" == "darwin18" ]]; then
     # Mac OSX
     printf "\e[35m ifconfig en0\e[37m\n"
-    # ip addr show 
+    # ip addr show
     ifconfig en0 | grep inet
+elif [[ "$OSTYPE" == "linux-gnueabihf" ]]; then
+    # Raspberry ARM
+    ifconfig eth0 | grep inet
 #elif [[ "$OSTYPE" == "cygwin" ]]; then
 #    # POSIX compatibility layer and Linux environment emulation for Windows
 #elif [[ "$OSTYPE" == "msys" ]]; then
@@ -44,10 +47,9 @@ elif [[ "$OSTYPE" == "darwin18" ]]; then
 elif [[ "$OSTYPE" == "win32" ]]; then
     # I'm not sure this can happen: Windows
     ifconfig /all
-else    
-    printf "\e[35m Uknown IP"
+else
+    printf "\e[35m Unknown IP (OSTYPE=$OSTYPE)"
 fi
-
 
 # colors prinft:  [34 - blue, 31-red   35m - Magenta  92 -lt green  37m - lt gray
 # \e[0m  reset  \e1m - bold
