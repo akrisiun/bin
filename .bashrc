@@ -15,6 +15,7 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 WINEDEBUG=-all
 rid='none'
 unamestr=`uname`
+
 if [[ "$unamestr" == 'Linux' ]]; then
    rid='linux'
 elif [[ "$unamestr" == 'Darwin' ]]; then
@@ -30,7 +31,7 @@ fi
 [ -z "$PS1" ] && return
 
 echo "rid=$rid"
-echo "TERM=$TERM"
+echo "TERM=$TERM SHELL=$SHELL"
 
 # https://github.com/ronanguilloux/dotfiles/blob/master/.bashrc
 # If this is an xterm set the title to user@host:dir
@@ -100,11 +101,10 @@ alias semaine='date +%V'
 # alias screencast='ffmpeg -f x11grab -r 25 -s wxga -i :0.0 /tmp/outputFile.mpg'
 #git
 alias gpo='git push origin '
-alias gs='git status'
-# View HTTP traffic
-alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+#gs - ghostscript
+alias gits='git status'
 
-# sdk
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-# export SDKMAN_DIR="/Users/andriusk/bin/.sdkman"
-# [[ -s "/Users/andriusk/bin/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/andriusk/bin/.sdkman/bin/sdkman-init.sh"
+# View HTTP traffic
+# alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+
+

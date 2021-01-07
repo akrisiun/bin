@@ -20,7 +20,8 @@ if [ $n -eq 8 ]; then
    echo "~/bin/myip.sh:"
 fi
 
-echo "\$OSTYPE= $OSTYPE"
+date
+echo "\$OSTYPE=$OSTYPE  SHELL=$SHELL"
 printf "\n My external IP address: \e[1m"
 curl -s http://ipecho.net/plain
 
@@ -56,7 +57,8 @@ fi
 printf " \n"
 
 if [ -f ~/bin/screenfetch-dev ]; then
-    ~/bin/screenfetch-dev | head -n $n
+   # echo "bash ~/bin/screenfetch-dev:"
+   /bin/bash -c ~/bin/screenfetch-dev | head -n $n
 else
    # echo ./screenfetch-dev + head -n $n
    ./screenfetch-dev | head -n $n
