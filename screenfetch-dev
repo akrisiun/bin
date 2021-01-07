@@ -1,6 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# nano goto Line: Ctrl+Shift+- : 
+#/usr/bin/env bash
+# nano goto Line: Ctrl+Shift+- :
 # screenFetch - a CLI Bash script to show system/theme info in screenshots
 
 # Copyright (c) 2010-2017 Brett Bohnenkamper <kittykatt@kittykatt.us>
