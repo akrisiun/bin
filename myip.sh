@@ -65,6 +65,7 @@ else
 fi
 
 printf "\n\e[0m"
+df -h
 
 # bash ~/bin/myip.sh -f > ~/index.html
 # ~/bin/myhttp -p 3000
