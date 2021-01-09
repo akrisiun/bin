@@ -1,0 +1,22 @@
+{
+  "name": "my-bin",
+  "version": "1.0.0",
+  "description": "My config and binary files for Windows/Osx/Linux",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./myhttp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akrisiun/bin.git"
+  },
+  "author": "myself",
+  "private": true,
+  "license": "MIT",
+  "homepage": "https://github.com/akrisiun/bin#readme",
+  "dependencies": {
+    "ansi-to-html": "^0.6.14",
+    "optimist": "^0.6.1"
+  }
+}

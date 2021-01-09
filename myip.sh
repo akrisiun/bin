@@ -31,16 +31,19 @@ ip route get 8.8.8.8 2>/dev/null| awk '{print $5}'
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # ...
-    printf "\r \e[92mip addr show eth0\e[37m\n"
+    printf " \e[92mip addr show eth0\e[37m\n"
     ip addr show eth0 | grep inet
+
 elif [[ "$OSTYPE" == "darwin18" ]]; then
     # Mac OSX
     printf "\e[35m ifconfig en0\e[37m\n"
     # ip addr show
     ifconfig en0 | grep inet
+
 elif [[ "$OSTYPE" == "linux-gnueabihf" ]]; then
     # Raspberry ARM
     ifconfig eth0 | grep inet
+
 #elif [[ "$OSTYPE" == "cygwin" ]]; then
 #    # POSIX compatibility layer and Linux environment emulation for Windows
 #elif [[ "$OSTYPE" == "msys" ]]; then
@@ -48,6 +51,7 @@ elif [[ "$OSTYPE" == "linux-gnueabihf" ]]; then
 elif [[ "$OSTYPE" == "win32" ]]; then
     # I'm not sure this can happen: Windows
     ifconfig /all
+
 else
     printf "\e[35m Unknown IP (OSTYPE=$OSTYPE)"
 fi
@@ -60,12 +64,11 @@ if [ -f ~/bin/screenfetch-dev ]; then
    # echo "bash ~/bin/screenfetch-dev:"
    /bin/bash -c ~/bin/screenfetch-dev | head -n $n
 else
-   # echo ./screenfetch-dev + head -n $n
    ./screenfetch-dev | head -n $n
 fi
 
 printf "\n\e[0m"
-df -h
+df -h | grep -v none
 
 # bash ~/bin/myip.sh -f > ~/index.html
 # ~/bin/myhttp -p 3000
