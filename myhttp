@@ -3,28 +3,21 @@
 'use strict';
 
 // sudo npm i -g optimist ansi-to-html
-// sudo ln -s /usr/local/nvm/versions/node/v10.14.2/lib/node_modules  /usr/local/lib/node_modules
-// sudo ln -s /home/$USER/.nvm/versions/node/v10.0.0/lib/node_modules /usr/local/lib/node_modules
-// var argv = require('optimist').argv;
-
 const node_modules = '/usr/local/lib/node_modules/';
+const os = require('os');
+const home = os.homedir();
+const http = require('http');
+const fs = require('fs');
+const convert = new (require(node_modules + 'ansi-to-html'));
+
 var argv = require(node_modules + 'optimist').argv;
 var host = "0.0.0.0";
 var port = 3001;
 var verbose = 1;
 
-'use strict';
-
-// var argv = require('optimist').argv;
-var node_modules = '/usr/local/lib/node_modules/';
-var argv = require(node_modules + 'optimist').argv;
-var host = "0.0.0.0";
-var port = 3001;
-var verbose = 2;
->>>>>>> origin/master
-
 port = argv.p || argv.port || parseInt(process.env.PORT, 10) || port;
 host = argv.a || host;
+
 const wait = function () {
   if (process.platform === 'win32') {
     require('readline').createInterface({
@@ -46,7 +39,6 @@ const wait = function () {
   });
 }
 
-const fs = require('fs');
 var content = "";
 function readIndex(index, then) {
    const enc = "binary";
@@ -59,7 +51,6 @@ function readIndex(index, then) {
       content = data.toString('binary');
 
       if (content && content.length > 0) {
-        // content = content + ("</pre></code>").toString('binary');
         if (verbose >= 2 && data.length > 0) {
             console.log(index, content)
         }
@@ -68,13 +59,9 @@ function readIndex(index, then) {
   });
 }
 
-const os = require('os');
-const home = os.homedir();
 var home_index = home + "/index.html";
 console.log("home", home);
-//  sudo npm i --global ansi-to-html
-var convert = new (require(node_modules + 'ansi-to-html/lib/ansi_to_html.js'));
-const http = require('http');
+
 var serv = http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   
@@ -110,18 +97,21 @@ a, a:visited {
     res.write('  <style>' + css + '</style>');
     res.write('</head><body');
 
-      res.write('Hello World <br>\n');
+    res.write('Hello World <br>\n');
     res.write('<pre><code>');
-      var htmlCode = convert.toHtml(html.toString());
-      res.write(htmlCode);
+    var htmlCode = convert.toHtml(html.toString());
+    res.write(htmlCode);
+
+    if (verbose >= 2) {
+       console.log(html.toString());
+    }
+
     res.write('</code></pre>');
     res.end();
   });
 });
 
-// verbose = 1; readIndex(home_index, function (content) { console.log(content.toString()) });
-
-// serv.on
+// serv on
 serv.listen(port, host);
 
 // Cyan '\x1b[36m%s

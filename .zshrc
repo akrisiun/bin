@@ -72,7 +72,7 @@ export ARCHFLAGS="-arch x86_64"
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="/usr/local/bin:/usr/local/opt/llvm/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 export LC_NUMERIC="en_LT"
 export LC_TIME="en_LT"
 export LC_COLLATE="en_LT"

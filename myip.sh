@@ -20,9 +20,8 @@ if [ $n -eq 8 ]; then
    echo "~/bin/myip.sh:"
 fi
 
-echo "\$OSTYPE= $OSTYPE"
 date +"%D %T"
-
+echo "\$OSTYPE=$OSTYPE  SHELL=$SHELL"
 printf "\n My external IP address: \e[1m"
 curl -s http://ipecho.net/plain
 
@@ -32,13 +31,19 @@ ip route get 8.8.8.8 2>/dev/null| awk '{print $5}'
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # ...
-    printf "\r \e[92mip addr show eth0\e[37m\n"
+    printf " \e[92mip addr show eth0\e[37m\n"
     ip addr show eth0 | grep inet
+
 elif [[ "$OSTYPE" == "darwin18" ]]; then
     # Mac OSX
     printf "\e[35m ifconfig en0\e[37m\n"
-    # ip addr show 
-    /sbin/ifconfig en0 | grep inet
+    # ip addr show
+    ifconfig en0 | grep inet
+
+elif [[ "$OSTYPE" == "linux-gnueabihf" ]]; then
+    # Raspberry ARM
+    ifconfig eth0 | grep inet
+
 #elif [[ "$OSTYPE" == "cygwin" ]]; then
 #    # POSIX compatibility layer and Linux environment emulation for Windows
 #elif [[ "$OSTYPE" == "msys" ]]; then
@@ -46,24 +51,24 @@ elif [[ "$OSTYPE" == "darwin18" ]]; then
 elif [[ "$OSTYPE" == "win32" ]]; then
     # I'm not sure this can happen: Windows
     ifconfig /all
-else    
-    printf "\e[35m Uknown IP"
-fi
 
+else
+    printf "\e[35m Unknown IP (OSTYPE=$OSTYPE)"
+fi
 
 # colors prinft:  [34 - blue, 31-red   35m - Magenta  92 -lt green  37m - lt gray
 # \e[0m  reset  \e1m - bold
 printf " \n"
 
 if [ -f ~/bin/screenfetch-dev ]; then
-    ~/bin/screenfetch-dev | head -n $n
+   # echo "bash ~/bin/screenfetch-dev:"
+   /bin/bash -c ~/bin/screenfetch-dev | head -n $n
 else
-   # echo ./screenfetch-dev + head -n $n
    ./screenfetch-dev | head -n $n
 fi
 
-printf "\n\e[0m \ndf -h\n\e[37m"
-df -h | head -n 5
+printf "\n\e[0m"
+df -h | grep -v none
 
 # bash ~/bin/myip.sh -f > ~/index.html
 # ~/bin/myhttp -p 3000

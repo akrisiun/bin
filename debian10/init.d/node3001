@@ -1,0 +1,46 @@
+### BEGIN INIT INFO
+# Provides:          node3001
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      
+# Short-Description: Start nodejs with port 3001 at boot time
+# Description:       A sophisticated script to do the job.
+### END INIT INFO
+
+#!/bin/bash
+
+# install:
+# sudo update-rc.d -f node3001 start 99 2 3 4 5 .
+# reload after editing:
+# systemctl daemon-reload
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+# USER=?
+echo "JOB RUN $1 : AT $(date) USER=$USER"
+# nodejs port 3001 service
+
+case "$1" in
+    start)
+    # code to start the application
+    # ;;
+    # su $USER -c "/usr/bin/node /var/www/node/hello.js"
+    start-stop-daemon --start --make-pidfile --pidfile /var/run/node3001.pid --chuid $USER --exec /home/andriusk/bin/myhttp -p 3001
+    ;;
+
+    stop)
+    # kill using 3001 port process
+    kill -9 $(lsof -ti tcp:3001)
+    ;;
+
+    status) 
+    lsof -i :3001
+    ;;
+
+    restart)
+    $0 stop
+    $0 start
+    ;;
+esac
+
+exit 0
