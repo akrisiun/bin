@@ -21,6 +21,8 @@ if [ $n -eq 8 ]; then
 fi
 
 echo "\$OSTYPE= $OSTYPE"
+date +"%D %T"
+
 printf "\n My external IP address: \e[1m"
 curl -s http://ipecho.net/plain
 
@@ -36,7 +38,7 @@ elif [[ "$OSTYPE" == "darwin18" ]]; then
     # Mac OSX
     printf "\e[35m ifconfig en0\e[37m\n"
     # ip addr show 
-    ifconfig en0 | grep inet
+    /sbin/ifconfig en0 | grep inet
 #elif [[ "$OSTYPE" == "cygwin" ]]; then
 #    # POSIX compatibility layer and Linux environment emulation for Windows
 #elif [[ "$OSTYPE" == "msys" ]]; then
@@ -60,7 +62,8 @@ else
    ./screenfetch-dev | head -n $n
 fi
 
-printf "\n\e[0m"
+printf "\n\e[0m \ndf -h\n\e[37m"
+df -h | head -n 5
 
 # bash ~/bin/myip.sh -f > ~/index.html
 # ~/bin/myhttp -p 3000
