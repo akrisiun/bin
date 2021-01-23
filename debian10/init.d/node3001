@@ -16,7 +16,7 @@
 # systemctl daemon-reload
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-# USER=?
+USER=andriusk
 echo "JOB RUN $1 : AT $(date) USER=$USER"
 # nodejs port 3001 service
 
@@ -25,7 +25,7 @@ case "$1" in
     # code to start the application
     # ;;
     # su $USER -c "/usr/bin/node /var/www/node/hello.js"
-    start-stop-daemon --start --make-pidfile --pidfile /var/run/node3001.pid --chuid $USER --exec /home/andriusk/bin/myhttp -p 3001
+    start-stop-daemon --start --make-pidfile --pidfile /var/run/node3001.pid --chuid $USER --exec /home/$USER/bin/myhttp -p 3001
     ;;
 
     stop)
