@@ -2,10 +2,19 @@
   "name": "browser-sample",
   "version": "1.1.0",
   "main": "main.js",
+  "private": true,
   "scripts": {
-    "start": "electron ./main"
+    "start": "electron ./main",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "dependencies": {
-    "electron": "^11.2.3"
-  }
+  },
+  "devDependencies": {
+    "electron": "^11.2.3",
+    "electron-builder": "^22.9.1"
+  },
+  "appId": "browser.lan",
+  "author": "me",
+  "description": "mini browser app"
 }
