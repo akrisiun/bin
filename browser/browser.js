@@ -1,7 +1,16 @@
 window.onresize = doLayout;
 var isLoading = false;
 
+let home = 'about:blank';
+// home = 'http://www.github.com/';
+const google = "https://google.com/?hl=en&q=";
+// TODO args
+home = google;
+
 onload = function() {
+
+  console.log("global..argv", global.process.argv);
+
   var webview = document.querySelector('webview');
   doLayout();
 
@@ -14,7 +23,7 @@ onload = function() {
   };
 
   document.querySelector('#home').onclick = function() {
-    navigateTo('http://www.github.com/');
+    navigateTo(google);
   };
 
   document.querySelector('#reload').onclick = function() {
@@ -34,9 +43,15 @@ onload = function() {
 
   document.querySelector('#location-form').onsubmit = function(e) {
     e.preventDefault();
-    navigateTo(document.querySelector('#location').value);
+    var url = document.querySelector('#location').value;
+    console.log("url", url);
+    if (url.indexOf('://') < 0) {
+        url = 'http://' + url;
+    }
+    navigateTo(url);
   };
 
+  navigateTo(home);
   webview.addEventListener('close', handleExit);
   webview.addEventListener('did-start-loading', handleLoadStart);
   webview.addEventListener('did-stop-loading', handleLoadStop);
