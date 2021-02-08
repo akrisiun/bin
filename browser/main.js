@@ -1,14 +1,6 @@
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, session} = require('electron');
 
-/* const remote = require('electron').remote;
-global.sharedObject = { prop1: app.commandLine.argv }; // process.argv };
-
-if (remote) {
-  const args = remote.getGlobal('sharedObject').prop1;
-
-  console.log("args", args);
-} */
-
+// browser options
 const opt = {
    width: 1024, height: 768,
    modal: false,
@@ -18,11 +10,14 @@ const opt = {
      nodeIntegration: true,
      webviewTag: true,
      enableRemoteModule: true,
-     allowRunningInsecureContent: true,
+     nativeWindowOpen: true,
+     allowRunningInsecureContent: false,
      disableHtmlFullscreenWindowResize: false
     } 
   };
+
 let mainWindow;
+let count = 1;
 
 app.on('window-all-closed', function() {
   app.quit();
@@ -33,7 +28,54 @@ app.on('certificate-error', (ev, webContents, url, error, cert, cb) => {
   cb(true);
 })
 
+function newWindow(url, options, event) {
+    const win = new BrowserWindow({
+      webContents: options.webContents, // use existing webContents if provided
+      show: true
+    })
+
+    /* if (!options.webContents) {
+      const loadOptions = {
+        httpReferrer: referrer
+      }
+      if (postBody != null) {
+        const { data, contentType, boundary } = postBody
+        loadOptions.postData = postBody.data
+        loadOptions.extraHeaders = `content-type: ${contentType}; boundary=${boundary}`
+      }
+  
+      // existing webContents will be navigated automatically
+      win.loadURL(url, loadOptions) 
+    } */
+    
+    count++;
+    win.title = "Browser #" + count;
+    win.loadURL('file://' + __dirname + '/browser.html');
+    
+    return win;
+}
+
+function newWindowGoogle(url, options, event) {
+  const win = new BrowserWindow({
+    webContents: options.webContents, // use existing webContents if provided
+    show: true
+  })
+   // https://stackoverflow.com/questions/59685927/electron-application-using-google-oauth-this-browser-or-app-may-not-be-secure
+   count++;
+   win.title = "Browser #" + count;
+   win.loadURL('https://www.google.co.uk/', {userAgent: 'Chrome'});
+
+   return win;
+}
+
 app.on('ready', function() {
+  
+  app.userAgentFallback = "Chrome";
+  session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
+    details.requestHeaders["User-Agent"] = "Chrome";
+    callback({ cancel: false, requestHeaders: details.requestHeaders });
+  });
+
   mainWindow = new BrowserWindow(opt);
 
   if (mainWindow.remote) {
@@ -45,6 +87,7 @@ app.on('ready', function() {
   mainWindow.loadURL('file://' + __dirname + '/browser.html');
 
   const contents = mainWindow.webContents;
+  
   /* if (contents) {
     contents.on('did-finish-load', (ev) => {
       console.log('loaded');
@@ -59,25 +102,11 @@ app.on('ready', function() {
 
   contents.on('new-window', 
     (event, url, frameName, disposition, options, additionalFeatures, referrer, postBody) => {
+    
     event.preventDefault()
-    const win = new BrowserWindow({
-      webContents: options.webContents, // use existing webContents if provided
-      show: false
-    })
-    win.once('ready-to-show', () => win.show())
-    if (!options.webContents) {
-      const loadOptions = {
-        httpReferrer: referrer
-      }
-      if (postBody != null) {
-        const { data, contentType, boundary } = postBody
-        loadOptions.postData = postBody.data
-        loadOptions.extraHeaders = `content-type: ${contentType}; boundary=${boundary}`
-      }
-  
-      // existing webContents will be navigated automatically
-      win.loadURL(url, loadOptions) 
-    }
+    const win = newWindowGoogle(url, options, event);
+    
     event.newGuest = win
   });
+  
 });

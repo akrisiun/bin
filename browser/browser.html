@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="browser.css">
     <script src="browser.js"></script>
   <body>
-    <div id="controls">
+    <div id="controls" style="background-color: gray;">
 
       <button id="back" title="Go Back" disabled="true">&#9664;</button>
       <button id="forward" title="Go Forward" disabled="true">&#9654;</button>
@@ -13,14 +13,19 @@
 
       <form id="location-form">
         <div id="center-column">
-          <input id="location" type="text" value="http://www.github.com/">
+          <input id="location" type="text" 
+            style="background-color: black; color: white; width: 90%;"
+            value="https://www.google.com/">
         </div>
-        <input type="submit" value="Go">
+        <input type="submit" value="Go!">
+        
+        <button id="newWin" 
+            style="border: 1px solid gray;"
+            title="New window">New</button>
+        
+        <button id="zoom" title="Change Zoom">&#128270;</button>
+        <button id="find" title="Find in Page">&#128294;</button>
       </form>
-
-      <button id="zoom" title="Change Zoom">&#128270;</button>
-      <button id="find" title="Find in Page">&#128294;</button>
-
     </div>
 
     <div id="zoom-box">
@@ -43,7 +48,7 @@
       </form>
     </div>
 
-    <webview src="http://www.github.com/" style="width:640px; height:480px"></webview>
+    <webview src="about:blank" style="width:640px; height:480px"></webview>
 
     <div id="sad-webview">
       <div id="sad-webview-icon">&#9762;</div>

@@ -50,6 +50,14 @@ onload = function() {
     }
     navigateTo(url);
   };
+  
+  document.querySelector('#newWin').onclick = function(e) {
+    
+    e.preventDefault();
+    
+    const newWin = window.open('https://google.com', '');
+    // newWin.document.write('<h1>Hello modaless!</h1>');
+  };
 
   navigateTo(home);
   webview.addEventListener('close', handleExit);
@@ -148,12 +156,14 @@ onload = function() {
     webview.addEventListener('findupdate', handleFindUpdate);
     window.addEventListener('keydown', handleKeyDown);
   } else {
-    var zoom = document.querySelector('#zoom');
-    var find = document.querySelector('#find');
-    zoom.style.visibility = "hidden";
-    zoom.style.position = "absolute";
-    find.style.visibility = "hidden";
-    find.style.position = "absolute";
+    try {
+        var zoom = document.querySelector('#zoom');
+        var find = document.querySelector('#find');
+        zoom.style.visibility = "hidden";
+        zoom.style.position = "absolute";
+        find.style.visibility = "hidden";
+        find.style.position = "absolute";
+    } catch (err) {}
   }
 };
 
@@ -181,7 +191,7 @@ function doLayout() {
 }
 
 function handleExit(event) {
-  console.log(event.type);
+  console.log("handleExit", event.type);
   document.body.classList.add('exited');
   if (event.type == 'abnormal') {
     document.body.classList.add('crashed');
