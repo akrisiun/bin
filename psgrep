@@ -1,0 +1,4 @@
+
+echo "psgrep $1"
+ps -ax | grep -v grep | grep $1
+

@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+const pwd = process.cwd();
+console.log("pwd", pwd, JSON.stringify(process.argv));
+
+// node -e "console.log(require('./package.json').scripts)" 
+console.log(require(pwd + '/package.json').scripts);
+
