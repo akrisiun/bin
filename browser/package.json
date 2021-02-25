@@ -1,0 +1,22 @@
+{
+  "name": "browser-sample",
+  "version": "1.2.0",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "ELECTRON_DISABLE_SECURITY_WARNINGS=1 electron ./main",
+    "main": "electron ./main",
+    "dopack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "app": "cp -r ./dist/linux-unpacked/* /app/browser/"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "crossenv": "^0.0.2-security",
+    "electron": "^11.2.3",
+    "electron-builder": "^22.9.1"
+  },
+  "appId": "browser.lan",
+  "author": "me",
+  "description": "mini browser app"
+}

@@ -1,0 +1,4 @@
+dist/
+*.tgz
+*.zip
+.env
