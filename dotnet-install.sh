@@ -2,6 +2,8 @@
 # Copyright (c) .NET Foundation and contributors. All rights reserved.
 # Licensed under the MIT license. See LICENSE file in the project root for full license information.
 #
+# https://dot.net/v1/dotnet-install.sh
+# ~/bin/dotnet-install.sh --version 3.1.404
 
 # Stop script on NZEC
 set -e
