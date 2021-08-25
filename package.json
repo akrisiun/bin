@@ -4,7 +4,8 @@
   "description": "My config and binary files for Windows/Osx/Linux",
   "main": "index.js",
   "scripts": {
-    "start": "node ./myhttp",
+    "start": "node ./http2",
+    "build": "echo OK http2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

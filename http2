@@ -4,7 +4,7 @@
 
 'use strict';
 
-const node_modules = '~/bin/node_modules/';
+const node_modules = './node_modules/';
 var argv = require(node_modules + 'optimist').argv;
 var host = "0.0.0.0";
 var port = 3000;
