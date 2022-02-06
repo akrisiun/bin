@@ -4,8 +4,8 @@
 #
 echo "Install links to ~"
 
-echo "~/.tmux.conf"
-ln -s -f ~/bin/debian9/.tmux.conf ~/.tmux.conf 
+# echo "~/.tmux.conf"
+# ln -s -f ~/bin/debian9/.tmux.conf ~/.tmux.conf
 
 sudo apt-get install  -y openvpn curl wget zsh net-tools dnsutils
 
@@ -14,6 +14,7 @@ sudo apt-get install  -y openvpn curl wget zsh net-tools dnsutils
 
 # unsecure...
 sudo chown andriusk /usr/local/bin
+
 # curl https://raw.githubusercontent.com/http-party/http-server/master/bin/http-server > /usr/local/bin/http-server
 # chmod +x /usr/local/bin/http-server
 # http-server . -p 9099

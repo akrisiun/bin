@@ -4,8 +4,9 @@
 
 'use strict';
 
-const node_modules = '~/bin/node_modules/';
-// const node_modules = './node_modules/';
+// const node_modules = '~/bin/node_modules/';
+const $PWD = process.cwd() + "/";
+const node_modules = $PWD + './node_modules/';
 var argv = require(node_modules + 'optimist').argv;
 var host = "0.0.0.0";
 var port = 3000;
@@ -16,7 +17,7 @@ host = argv.a || host;
 
 const exec = require('child_process').exec;
 
-console.log('exec', './myip.sh -n 10 > ~/index.html');
+console.log('exec', 'modules ' + node_modules + ' ./myip.sh -n 10 > ~/index.html');
 exec ('./myip.sh -n 10 > ~/index.html');
 exec ('echo "service --status-all\n" >> ~/index.html');
 exec ('sudo service --status-all >> ~/index.html');
