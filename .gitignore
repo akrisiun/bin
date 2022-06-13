@@ -58,6 +58,8 @@ vscode
 wine32-dotnet1-fail/
 winenet45/
 *.ovpn
+.ssh/
+.env*
 win10_64/Choco/chocolateyInstall/
 7*.dll
 F*.vsix

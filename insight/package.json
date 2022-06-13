@@ -1,0 +1,15 @@
+{
+  "name": "insight",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "applicationinsights": "^2.2.2",
+    "express": "^4.17.3",
+    "os": "^0.1.2"
+  }
+}
