@@ -39,3 +39,5 @@ ln -s ~/bin/.vimrc ~/.vimrc
 " Vimrc: clone:
 " curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc > ~/.vimrc
 ```
+
+Push
