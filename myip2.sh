@@ -27,13 +27,13 @@ printf "\n My external IP address: \e[1m"
 curl -s http://ipecho.net/plain
 
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
-# printf "\n\e[36m ip route interface: "
-# ip route get 8.8.8.8 2>/dev/null| awk '{print $5}'
+printf "\n\e[36m ip route interface: "
+ip route get 8.8.8.8 2>/dev/null| awk '{print $5}'
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # ...
     printf " \e[92mip addr show eth0\e[37m\n"
-    # /sbin/ip addr show eth0 | grep inet
+    /sbin/ip addr show eth0 | grep inet
 
 elif [[ "$OSTYPE" == "darwin18" ]]; then
     # Mac OSX
@@ -61,12 +61,12 @@ fi
 # \e[0m  reset  \e1m - bold
 printf " \n"
 
-#if [ -f ~/bin/screenfetch-dev ]; then
-#   # echo "bash ~/bin/screenfetch-dev:"
-#   /bin/bash -c ~/bin/screenfetch-dev | head -n $n
-#else
-#   ./screenfetch-dev | head -n $n
-#fi
+if [ -f ~/bin/screenfetch-dev ]; then
+   # echo "bash ~/bin/screenfetch-dev:"
+   /bin/bash -c ~/bin/screenfetch-dev | head -n $n
+else
+   ./screenfetch-dev | head -n $n
+fi
 
 printf "\n\e[0m"
 df -h | grep -v none
