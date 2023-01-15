@@ -33,7 +33,7 @@ curl -s http://ipecho.net/plain
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # ...
     printf " \e[92mip addr show eth0\e[37m\n"
-    /sbin/ip addr show eth0 | grep inet
+    # /sbin/ip addr show eth0 | grep inet
 
 elif [[ "$OSTYPE" == "darwin18" ]]; then
     # Mac OSX
