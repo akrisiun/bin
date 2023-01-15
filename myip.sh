@@ -14,6 +14,7 @@ fi
 if [ $n=9 ]; then
    echo "~/bin/myip.sh:"
 fi
+
 # https://linuxize.com/post/bash-if-else-statement/
 # echo [ $argv 0=$0 1=$1 2=$2 n=$n ]
 if [ $n -eq 8 ]; then
@@ -26,8 +27,8 @@ printf "\n My external IP address: \e[1m"
 curl -s http://ipecho.net/plain
 
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
-printf "\n\e[36m ip route interface: "
-ip route get 8.8.8.8 2>/dev/null| awk '{print $5}'
+# printf "\n\e[36m ip route interface: "
+# ip route get 8.8.8.8 2>/dev/null| awk '{print $5}'
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # ...
