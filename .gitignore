@@ -67,3 +67,4 @@ F*.vsix
 /3001
 /3000
 index.html
+.env*
