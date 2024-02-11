@@ -17,8 +17,8 @@ host = argv.a || host;
 
 const exec = require('child_process').exec;
 
-console.log('exec', './myip.sh -n 10 > ~/index.html');
-exec ('./myip.sh -n 10 > ~/index.html');
+console.log('exec', './myip2.sh -n 10 > ~/index.html');
+exec ('./myip2.sh -n 10 > ~/index.html');
 exec ('echo "service --status-all\n" >> ~/index.html');
 exec ('echo ~/serv.txt >> ~/index.html');
 // exec ('sudo service --status-all >> ~/serv.txt');
@@ -86,7 +86,7 @@ var convert = new (require(node_modules + 'ansi-to-html/lib/ansi_to_html.js'));
 
 const http = require('http');
 var serv = http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
+  // res.writeHead(200, {'Content-Type': 'text/plain'});
   
   readIndex(home_index, function (content) {
     var html = content;

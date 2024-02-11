@@ -12,7 +12,7 @@ if [[ $1 = "-f" ]]; then
 fi
 
 if [ $n=9 ]; then
-   echo "~/bin/myip.sh:"
+   echo "~/bin/myip2.sh:"
 fi
 
 # https://linuxize.com/post/bash-if-else-statement/

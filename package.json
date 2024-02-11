@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./http2",
     "start4": "sudo service --status-all >> ~/serv.txt | PORT=4000 node ./http2",
-    "build": "echo 'Hello http2 script' > public/index.html && ./myip.sh -n 10 > public/index.html",
+    "build": "echo 'Hello http2 script' > public/index.html && ./myip2.sh -n 10 > ../index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
