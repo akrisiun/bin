@@ -84,7 +84,7 @@ function start_1() {
     vncserver -kill :1 &&  vncserver -geometry 1650x950 :1  -alwaysshared -dpi 96
     # -alwaysshared -dpi 96 -interface enp8s0
 
-    tail -f /home/andriusk/.vnc/debian10:1.log
+    tail -f ~/.vnc/debian10:1.log
 }
 
 help 

@@ -2,8 +2,6 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 
-# /Users/andriusk/.oh-my-zsh
-# export ZSH="/Users/andriusk/.oh-my-zsh"
 export KUBECONFIG=~/.kube/config
 
 # v10.16.3
