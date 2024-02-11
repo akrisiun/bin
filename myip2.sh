@@ -35,7 +35,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     printf " \e[92mip addr show eth0\e[37m\n"
     /sbin/ip addr show eth0 | grep inet
 
-elif [[ "$OSTYPE" == "darwin18" ]]; then
+elif [[ "$OSTYPE" == "darwin22" ]]; then
     # Mac OSX
     printf "\e[35m ifconfig en0\e[37m\n"
     # ip addr show
