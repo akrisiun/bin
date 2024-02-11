@@ -28,6 +28,10 @@ ssh -i ~/.ssh/id_ed25519  $HOST -p 22 -vv
 ssh $HOST cat ~/.ssh/authorized_keys
 ```
 
+macOs restart ssh:
+sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist  
+sudo launchctl load /System/Library/LaunchDaemons/ssh.plist  
+
 Troubles
 1. ssh ed25519 Bad configuration option: usekeychain
 IgnoreUnknown UseKeychain

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // sudo npm i -g optimist ansi-to-html
 // cd ~/bin && npm i optimist ansi-to-html
+// PORT=4000 node ./http2
 
 'use strict';
 
@@ -16,10 +17,11 @@ host = argv.a || host;
 
 const exec = require('child_process').exec;
 
-console.log('exec', './myip2.sh -n 10 > ~/index.html');
-exec ('./myip2.sh -n 10 > ~/index.html');
+console.log('exec', './myip.sh -n 10 > ~/index.html');
+exec ('./myip.sh -n 10 > ~/index.html');
 exec ('echo "service --status-all\n" >> ~/index.html');
-exec ('sudo service --status-all >> ~/index.html');
+exec ('echo ~/serv.txt >> ~/index.html');
+// exec ('sudo service --status-all >> ~/serv.txt');
 
 var options = { };
 var ssl = 0; // TODO:
@@ -84,7 +86,7 @@ var convert = new (require(node_modules + 'ansi-to-html/lib/ansi_to_html.js'));
 
 const http = require('http');
 var serv = http.createServer(function (req, res) {
-  // res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.writeHead(200, {'Content-Type': 'text/plain'});
   
   readIndex(home_index, function (content) {
     var html = content;

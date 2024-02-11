@@ -26,7 +26,6 @@
 	excludesfile = /Users/andriusk/.gitignore_global
 	autocrlf = False
 	editor = \"codein\" fileeditor
-#	editor = \"/Users/andriusk/vm/GitExtensions/GitExtensions.exe\" fileeditor
 [pull]
 	rebase = false
 [push]
